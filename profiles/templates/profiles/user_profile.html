@@ -1,0 +1,18 @@
+{% extends 'carwash/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<main>
+    <form action="" method="post" class="container">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-lg"></div>
+            <div class="col-lg">
+                {{ form|crispy }}
+                <input type="submit" class="my-2" value="Сохранить">
+            </div>
+            <div class="col-lg"></div>
+        </div>
+    </form>
+</main>
+{% endblock %}

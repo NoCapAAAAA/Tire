@@ -1,0 +1,8 @@
+{% load crispy_forms_tags %}
+
+<form action="" method="post" class="container">
+    <h3>Связаться с нами</h3>
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input type="submit" value="Отправить" class="btn btn-primary my-2">
+</form>

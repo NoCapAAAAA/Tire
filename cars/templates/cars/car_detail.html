@@ -1,0 +1,40 @@
+{% extends 'carwash/base.html' %}
+
+{% block main %}
+<main class="container">
+    <table class="table">
+        <tr>
+            <td>Марка</td>
+            <td>{{ car.brand }}</td>
+        </tr>
+        <tr>
+            <td>Модель</td>
+            <td>{{ car.model }}</td>
+        </tr>
+        <tr>
+            <td>Кузов</td>
+            <td>{{ car.bodywork }}</td>
+        </tr>
+        <tr>
+            <td>Салон</td>
+            <td>{{ car.salon }}</td>
+        </tr>
+        <tr>
+            <td>Покрытие</td>
+            <td>{{ car.coverage }}</td>
+        </tr>
+        <tr>
+            <td>Госномер</td>
+            <td>{{ car.state_number }}</td>
+        </tr>
+        <tr>
+            <td>Класс</td>
+            <td>{{ car.get_car_class }}</td>
+        </tr>
+    </table>
+    <div class="container">
+        <a href="{% url 'car_edit' car.pk %}" class="btn btn-primary">Редактировать</a>
+        <a href="{% url 'car_delete' car.pk %}" class="btn btn-danger">Удалить</a>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+<div class="container">
+    <header class="d-flex align-items-center justify-content-between">
+        <div class="brand d-flex flex-column my-4">
+            <a class="text-decoration-none link-dark" href="{% url 'home' %}" style="font-size: 24px;">
+                <img src="{% static 'logo.png' %}" alt="logo" height="60">
+                &nbsp;Автомойка
+            </a>
+            <a class="link link-dark" href="{% url 'contacts' %}">Москва, Бакунинская улица, 81</a>
+        </div>
+        <div class="date-today">
+            <p class="h5">Дата: {{ today }}</p>
+        </div>
+    </header>
+
+    <div>
+        <table class="table table-striped table-hover " id="report-table">
+            <tr class="table-primary">
+                <th>Услуга</th>
+                <th>Авто</th>
+                <th>Дата оформления</th>
+                <th>Оплачен</th>
+                <th>Состояние</th>
+                <th>Сумма</th>
+            </tr>
+            {% for order in orders %}
+            <tr onclick="window.location='{{ order.get_absolute_url }}';" style="cursor: pointer;">
+                <td>{{ order.price.service }}</td>
+                <td>{{ order.car }}</td>
+                <td>{{ order.created_at }}</td>
+                <td>{% if order.is_payed %} Да ({{ order.payed_at }}) {% else %} Нет {% endif %}</td>
+                <td>{{ order.get_status_display }}</td>
+                <td>{{ order.get_sum }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td class="text-center" colspan="6">Заказы отсутсвуют</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="total d-flex justify-content-end">
+            <b class=" text-right h4">Итого: {{ total_sum }}</b>
+        </div>
+        <div class="ml-5 stamp">
+            <img src="{% static 'carwash/stamp.jpeg' %}" height="180" alt="">
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'carwash/base.html' %}
+{% block main %}
+<main class="container">
+    <table class="table">
+        <tr>
+            <td>Услуга</td>
+            <td>{{ order.price.service }}</td>
+        </tr>
+        <tr>
+            <td>Авто</td>
+            <td>{{ order.car }}</td>
+        </tr>
+        <tr>
+            <td>Оплачено</td>
+            <td>{% if order.is_payed %} Да {% else %} Нет {% endif %}</td>
+        </tr>
+        <tr>
+            <td>Состояние</td>
+            <td>{{ order.get_status_display }}</td>
+        </tr>
+        <tr>
+            <td>Сумма</td>
+            <td>{{ order.get_sum }}</td>
+        </tr>
+    </table>
+    {% if not order.is_payed and order.status != status_cancelled %}
+    <a href="{% url 'order_pay' order.pk %}" class="btn btn-primary">Оплатить</a>
+    {% endif %}
+    {% if order.status != status_cancelled and not order.is_payed %}
+    <a href="{% url 'order_cancel' order.pk %}" class="btn btn-danger">Отменить</a>
+    {% endif %}
+    {% if order.is_payed %}
+    <a href="{% url 'order_cheque' order.pk %}" class="btn btn-primary">Просмотреть чек</a>
+    {% endif %}
+</main>
+{% endblock %}

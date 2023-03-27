@@ -1,0 +1,25 @@
+{% extends 'carwash/base.html' %}
+{% block main %}
+<main>
+    <section class="p-4">
+        <div class="container">
+            <h1 class="text-center display-6 mb-4">Цены</h1>
+            {% for service in services %}
+            <h4>{{ service.name }}</h4>
+            <table class="table table-lg table-striped mb-4">
+                <tr class="table-warning">
+                    <th>Класс автомобиля</th>
+                    <th>Цена (руб.)</th>
+                </tr>
+                {% for price in service.price_set.all %}
+                <tr>
+                    <td>{{ price.car_class }}</td>
+                    <td>{{ price.price }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+{% endblock %}

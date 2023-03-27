@@ -1,0 +1,43 @@
+{% extends 'carwash/base.html' %}
+{% block main %}
+<main class="container-xl">
+    <h3 class="text-center mt-3 mb-4">Мои заказы</h3>
+    <form action="" method="get" class="my-4 ">
+        <input type="date" name="date_from" value="{{ date_from }}" id="date_from">
+        <input type="date" name="date_until" value="{{ date_until }}" id="date_until">
+        <!-- <input type="checkbox" name="report" value="report" id="">
+        <label for="report">Сформировать отчет</label> -->
+        <input type="submit" value="Просмотр" class="btn btn-primary">
+    </form>
+    <table class="table table-striped table-hover " id="report-table">
+        <tr class="table-primary">
+            <th>Услуга</th>
+            <th>Авто</th>
+            <th>Дата оформления</th>
+            <th>Оплачен</th>
+            <th>Состояние</th>
+            <th>Сумма</th>
+        </tr>
+        {% for order in orders %}
+        <tr onclick="window.location='{{ order.get_absolute_url }}';" style="cursor: pointer;">
+            <td>{{ order.price.service }}</td>
+            <td>{{ order.car }}</td>
+            <td>{{ order.created_at }}</td>
+            <td>{% if order.is_payed %} Да {% else %} Нет {% endif %}</td>
+            <td>{{ order.get_status_display }}</td>
+            <td>{{ order.get_sum }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td class="text-center" colspan="6">Заказы отсутсвуют</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="total d-flex justify-content-end">
+        <b class="mb-3 text-right h4">Итого: {{ total_sum }}</b>
+    </div>
+    <div class="container">
+        <a href="{% url 'order_create' %}" class="btn btn-primary mb-3">Оформить заказ</a>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'carwash/base.html' %}
+
+{% block main %}
+<main class="container-xl">
+    <h3 class="text-center mt-3 mb-4">Мои автомобили</h3>
+    <table class="table table-striped table-hover">
+        <tr class="table-primary">
+            <th>Марка</th>
+            <th>Модель</th>
+            <th>Госномер</th>
+            <th>Класс</th>
+        </tr>
+        {% for car in cars %}
+        <tr onclick="window.location='{{ car.get_absolute_url }}';" style="cursor: pointer;">
+            <td>{{ car.brand }}</td>
+            <td>{{ car.model }}</td>
+            <td>{{ car.state_number }}</td>
+            <td>{{ car.get_car_class }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td class="text-center" colspan="4">Пусто</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="container">
+        <a href="{% url 'car_create' %}" class="btn btn-primary mb-3">Добавить автомобиль</a>
+    </div>
+</main>
+{% endblock %}

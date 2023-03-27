@@ -1,0 +1,134 @@
+{% extends 'carwash/base.html' %}
+{% load static %}
+{% block main %}
+<style>
+    .hello-msg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @media (max-width: 400px) {
+        .hello-msg {
+            position: static;
+            transform: none;
+        }
+
+        .hello-msg p,
+        .hello-msg h1 {
+            color: black;
+        }
+    }
+</style>
+<main>
+    <section class="hello position-relative h-100 overflow-hidden">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <img src="{% static 'carwash/landing-bg.jpg' %}" width="100%" class="landing-bg" alt="background"
+                        style="filter: brightness(0.9)">
+                    <div class="hello-msg container  d-flex align-items-center flex-column text-dark bg-light p-4"
+                        style="border-radius: 24px; width: fit-content; opacity: 0.8;">
+                        <h1 class="display-6 mb-4">Чистая машина за 10 минут</h1>
+                        <!-- <div class="d-flex mb-5">
+                    <p class="m-0 py-1 px-3 mx-1 border rounded">Быстро</p>
+                    <p class="m-0 py-1 px-3 mx-1 border rounded">Безопасно</p>
+                    <p class="m-0 py-1 px-3 mx-1 border rounded">Недорого</p>
+                </div> -->
+                        <a href="{% url 'about' %}" class="btn btn-lg btn-primary">Подробнее</a>
+                    </div>
+                </div>
+                <div class="carousel-item " data-bs-interval="20000">
+                    <img src="{% static 'carwash/landing-bg2.jpg' %}" width="100%" class="landing-bg" alt="background"
+                        style="filter: brightness(0.9)">
+                    <div class="hello-msg container  d-flex align-items-center flex-column text-dark bg-light p-4"
+                        style="border-radius: 24px; width: fit-content; opacity: 0.8;">
+                        <h1 class="display-6 mb-4">Чистая машина за 10 минут</h1>
+                        <!-- <div class="d-flex mb-5">
+                    <p class="m-0 py-1 px-3 mx-1 border rounded">Быстро</p>
+                    <p class="m-0 py-1 px-3 mx-1 border rounded">Безопасно</p>
+                    <p class="m-0 py-1 px-3 mx-1 border rounded">Недорого</p>
+                </div> -->
+                        <a href="{% url 'about' %}" class="btn btn-lg btn-primary">Подробнее</a>
+                    </div>
+                </div>
+                <div class="carousel-item " data-bs-interval="30000">
+                    <img src="{% static 'carwash/landing-bg3.jpg' %}" width="100%" class="landing-bg" alt="background"
+                        style="filter: brightness(0.9)">
+                    <div class="hello-msg container  d-flex align-items-center flex-column text-dark bg-light p-4"
+                        style="border-radius: 24px; width: fit-content; opacity: 0.8;">
+                        <h1 class="display-6 mb-4">Чистая машина за 10 минут</h1>
+                        <!-- <div class="d-flex mb-5">
+                    <p class="m-0 py-1 px-3 mx-1 border rounded">Быстро</p>
+                    <p class="m-0 py-1 px-3 mx-1 border rounded">Безопасно</p>
+                    <p class="m-0 py-1 px-3 mx-1 border rounded">Недорого</p>
+                </div> -->
+                        <a href="{% url 'about' %}" class="btn btn-lg btn-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-5 my-3">
+        <h1 class="text-center mb-4">Наши услуги</h1>
+        <div class="container">
+            <h2>Мойка кузова</h2>
+            <div class="row">
+                <div class="col tile">
+                    <a class="text-decoration-none text-black" href="{% url 'contactless_wash' %}">
+                        <img class="d-block m-auto" src="{% static 'carwash/1.png' %}" alt="img">
+                        <h5>Мойка бесконтактная</p>
+                    </a>
+                </div>
+                <div class="col tile">
+                    <a class="text-decoration-none text-black" href="{% url 'complex_wash' %}">
+                    <img class="d-block m-auto" src="{% static 'carwash/2.png' %}" alt="img">
+                    <h5>Мойка комплексная</h5>
+                    </a>
+                </div>
+                <div class="col tile">
+                    <a class="text-decoration-none text-black" href="{% url 'nano_wash' %}">
+                    <img class="d-block m-auto" src="{% static 'carwash/3.png' %}" alt="img">
+                    <h5>Нано мойка</h5>
+                    </a>
+                </div>
+            </div>
+            <style>
+                .tile {
+                    margin-top: 24px;
+                }
+            </style>
+            <div class="row">
+                <div class="col tile">
+                    <a class="text-decoration-none text-black" href="{% url 'ceramic_wash' %}">
+                    <img class="d-block m-auto" src="{% static 'carwash/4.png' %}" alt="img">
+                    <h5>Керамо мойка</h5>
+                    </a>
+                </div>
+                <div class="col tile">
+                    <a class="text-decoration-none text-black" href="{% url 'bottom_wash' %}">
+                    <img class="d-block m-auto" src="{% static 'carwash/5.png' %}" alt="img">
+                    <h5>Мойка днища</h5>
+                    </a>
+                </div>
+                <div class="col tile">
+                    <a class="text-decoration-none text-black" href="{% url 'engine_wash' %}">
+                    <img class="d-block m-auto" src="{% static 'carwash/6.png' %}" alt="img">
+                    <h5>Мойка двигателя</h5>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

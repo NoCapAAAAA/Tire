@@ -1,0 +1,14 @@
+{% extends 'carwash/base.html' %}
+
+{% block main %}
+<main>
+    <form action="" method="post" class="container">
+        {% csrf_token %}
+        <div>
+            Вы уверены, что хотите удалить {{ car.get_readable_name }}?
+        </div>
+        <input type="submit" value="Удалить" class="btn btn-danger">
+        <a href="{% url 'car_list' %}" class="btn btn-primary">Вернуться к списку авто</a>
+    </form>
+</main>
+{% endblock %}

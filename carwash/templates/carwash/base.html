@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Автомойка №1 {% endblock %}
+{% block header %}
+<div class="bg-light">
+    <div class="container top d-flex justify-content-between py-2">
+        <div class="brand d-flex flex-column">
+            <a class="text-decoration-none link-dark" href="{% url 'home' %}" style="font-size: 24px;">
+                <img src="{% static 'logo.png' %}" alt="logo" height="60">
+                &nbsp;Автомойка
+            </a>
+            <a class="link link-dark" href="{% url 'contacts' %}">Москва, Бакунинская улица, 81</a>
+        </div>
+        <style>
+            .social-links {
+                font-size: 32px;
+                margin-right: 10px;
+            }
+
+            .phone-number {
+                font-size: 18px;
+            }
+        </style>
+        <div class="right">
+            <p class="mb-0 phone-number">+7 (916) 123-15-15</p>
+            <p class="mb-0 phone-number">+7 (916) 123-15-16</p>
+            <div class="links">
+                <a href="http://t.me/" class="social-links"><i class="fa fa-telegram"></i></a>
+                <a href="http://vk.com/id152687816/" class="social-links"><i class="fa fa-vk"></i></a>
+                <a href="http://fb.com/" class="social-links"><i class="fa fa-facebook"></i></a>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <a class="navbar-brand h4 my-auto" href="{% url 'home' %}">&nbsp;
+            <img src="{% static 'logo.png' %}" alt="logo" height="40">
+            &nbsp;Автомойка
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+            aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container-lg">
+            <div class="collapse navbar-collapse " id="navbarsExample04">
+                <ul class="navbar-nav col-9">
+                    <li class="nav-item">
+                        <a class="nav-link h5
+                    {% if header_selected_index == 0 %} text-warning {% else %} text-white {% endif %}"
+                            href="{% url 'home' %}">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link h5
+                    {% if header_selected_index == 1 %} text-warning {% else %} text-white {% endif %}"
+                            href="{% url 'prices' %}">Цены</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link h5
+                    {% if header_selected_index == 2 %} text-warning {% else %} text-white {% endif %}"
+                            href="{% url 'about' %}">О нас</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link h5
+                    {% if header_selected_index == 3 %} text-warning {% else %} text-white {% endif %}"
+                            href="{% url 'contacts' %}">Контакты</a>
+                    </li>
+                </ul>
+                <div class="col ml-auto">
+                    {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                            id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{ user.photo.url }}" alt="profile_image" width="32" height="32" class="rounded-circle me-2">
+                            <strong class="h5">{{ user.username }}</strong>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                            <li><a class="dropdown-item" href="{% url 'user_detail' %}">Профиль</a></li>
+                            <li><a class="dropdown-item" href="{% url 'car_list' %}">Автомобили</a></li>
+                            <li><a class="dropdown-item" href="{% url 'order_list' %}">Заказы</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Выйти</a></li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-warning">Войти</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+{% endblock %}
+{% block main %} {% endblock %}
+{% block footer %}
+<footer class="footer bg-light">
+    <div class="botttom container py-4">
+        <div class="brand d-flex flex-column">
+            <a class="text-decoration-none link-dark my-2" href="{% url 'home' %}" style="font-size: 24px;">
+                <img src="{% static 'logo.png' %}" alt="logo" height="60">
+                &nbsp;Автомойка
+            </a>
+            <a class="link link-dark my-3" href="{% url 'contacts' %}">Москва, Бакунинская улица, 81</a>
+        </div>
+            <div class="links">
+                <a href="http://t.me/" class="social-links"><i class="fa fa-telegram"></i></a>
+                <a href="http://vk.com/id152687816/" class="social-links"><i class="fa fa-vk"></i></a>
+                <a href="http://fb.com/" class="social-links"><i class="fa fa-facebook"></i></a>
+            </div>
+        <div class="right">
+            <p class="mb-1 phone-number">+7 (916) 123-15-15</p>
+            <p class="mb-1 phone-number">+7 (916) 123-15-16</p>
+        </div>
+    </div>
+</footer>
+{% endblock %}
