@@ -19,8 +19,7 @@ urlpatterns = [
     path('auth/', include('authentication.urls'), name='authentication'),
     path('profile/', include('profiles.urls'), name='profiles'),
     path('cars/', include('cars.urls'), name='cars'),
-    path('dir/', v.Test.as_view(), name='dir'),
-    path('men/', v.Test2.as_view(), name='men'),
+    path('staff/', include('organization.urls'), name='organization'),
 ]
 
 

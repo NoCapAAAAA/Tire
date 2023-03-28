@@ -21,6 +21,7 @@ class AboutView(generic.TemplateView):
         'header_selected_index': 2
     }
 
+
 class PricesView(generic.TemplateView):
     template_name = 'carwash/prices.html'
     extra_context = {

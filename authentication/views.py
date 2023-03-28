@@ -76,11 +76,3 @@ class PasswordChangeView(UpdateView):
 
     def get_object(self):
         return self.request.user
-
-
-class Test(TemplateView):
-    template_name = 'authentication/dir.html'
-
-
-class Test2(TemplateView):
-    template_name = 'authentication/men.html'
