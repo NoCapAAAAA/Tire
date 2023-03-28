@@ -4,4 +4,8 @@
 
 {% block main %}
 привет диреток
+
+<a href="{% url 'directorUsers' %}">Пользователи</a>
+<a href="{% url 'directorOrders' %}">Заказы</a>
+<a href="{% url 'directorStatistics' %}">Стастистика</a>
 {% endblock %}

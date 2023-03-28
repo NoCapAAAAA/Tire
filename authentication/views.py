@@ -23,9 +23,9 @@ class LoginView(FormView):
         users_in_group2 = Group.objects.get(name="Менеджер").user_set.all()
 
         if self.request.user in users_in_group:
-            return '/dir/'
+            return '/staff/director/'
         elif self.request.user in users_in_group2:
-            return '/men/'
+            return '/staff/manager/'
         return super().get_success_url()
 
     def form_valid(self, form):

@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'carwash/base.html' %}
 
-</body>
-</html>
+{% block title %} Клиенты {% endblock %}
+
+{% block main %}
+привет диреток
+здесь пользователи системы
+<a href="{% url 'directorStuff' %}">Сотрудники</a>
+<a href="{% url 'directorClients' %}">Клиенты</a>
+
+{% endblock %}
