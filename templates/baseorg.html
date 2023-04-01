@@ -26,9 +26,6 @@
 <!-- App css -->
     <link href="{%static 'assets/css/app.min.css' %}" type="text/css" rel="stylesheet">
     <link href="{%static 'assets/css/app.css' %}" type="text/css" rel="stylesheet">
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 {% block body %}
@@ -37,11 +34,14 @@
     <div class="preloader-icon"></div>
     <span>Loading...</span>
 </div>
+
 <!-- ./ Preloader -->
-<body class="horizontal-navigation">
 <div class="layout-wrapper">
+    {% block header %} {% endblock %}
+<body class="horizontal-navigation">
+
     <div class="content-wrapper">
-        {% block header %} {% endblock %}
+
     <div class="content-wrapper">
         {% block main %} {% endblock %}
     </div>
@@ -49,28 +49,27 @@
 
 
 
-<script src="../../vendors/bundle.js"></script>
+
     <script src="{%static 'vendors/bundle.js' %}"></script>
 
     <!-- Apex chart -->
-    <script src="../../vendors/charts/apex/apexcharts.min.js"></script>
     <script src="{%static 'vendors/charts/apex/apexcharts.min.js' %}"></script>
 
     <!-- Daterangepicker -->
-    <script src="../../vendors/datepicker/daterangepicker.js"></script>
     <script src="{%static 'vendors/datepicker/daterangepicker.js' %}"></script>
 
     <!-- DataTable -->
-    <script src="../../vendors/dataTable/datatables.min.js"></script>
     <script src="{%static 'vendors/dataTable/datatables.min.js' %}"></script>
 
     <!-- Dashboard scripts -->
-    <script src="../../assets/js/examples/pages/dashboard.js"></script>
     <script src="{%static 'assets/js/examples/pages/dashboard.js' %}"></script>
 
-<!-- App scripts -->
-<script src="../../assets/js/app.min.js"></script>
-<script src="{%static 'assets/js/app.min.js' %}"></script>
+    <!-- App scripts -->
+    <script src="{%static 'assets/js/app.min.js' %}"></script>
+
+
+
+
 </body>
 {% endblock %}
 
