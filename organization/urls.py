@@ -13,7 +13,7 @@ urlpatterns = [
     path('director/statistics', v.DirectorStatisticsView.as_view(), name='directorStatistics'),
 
 
-    path('manager/', v.ManagerOrdersView.as_view(), name='managerHome'),
+    path('manager/', v.ManagerHomeView.as_view(), name='managerHome'),
 
 
 ]
