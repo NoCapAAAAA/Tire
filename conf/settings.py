@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'carwash',
     'profiles',
     'core',
-    'organization'
+    'organization',
+    'tirestorage'
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
