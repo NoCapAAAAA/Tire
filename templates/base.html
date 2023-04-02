@@ -11,14 +11,17 @@
     <!-- fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">
     <!-- css -->
-    <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{%static 'vendor/owl-carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-    <link href="{%static 'vendor/photoswipe/photoswipe.css' %}" rel="stylesheet">
-    <link href="{%static 'vendor/photoswipe/default-skin/default-skin.css' %}" rel="stylesheet">
-    <link href="{%static 'vendor/select2/css/select2.min.css' %}" rel="stylesheet">
-    <link href="{%static 'css/style.css' %}" rel="stylesheet">
-    <link href="{%static 'vendor/fontawesome/css/all.min.css' %}" rel="stylesheet">
-    <link href="{%static 'fonts/stroyka/stroyka.css' %}" rel="stylesheet">
+    <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{%static 'vendor/owl-carousel/assets/owl.carousel.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{%static 'vendor/photoswipe/photoswipe.css' %}" type="text/css" rel="stylesheet">
+    <link href="{%static 'vendor/photoswipe/default-skin/default-skin.css' %}" type="text/css" rel="stylesheet">
+    <link href="{%static 'vendor/select2/css/select2.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{%static 'css/style.css' %}" type="text/css" rel="stylesheet">
+    <link href="{%static 'css/style.css.map' %}" type="text/css" rel="stylesheet">
+    <link href="{%static 'css/style.ltr.css' %}" type="text/css" rel="stylesheet">
+<!--    <link href="{%static 'css/style.rtl.css' %}" type="text/css" rel="stylesheet">-->
+    <link href="{%static 'vendor/fontawesome/css/all.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{%static 'fonts/stroyka/stroyka.css' %}" type="text/css" rel="stylesheet">
 </head>
 
 {% block body %}
@@ -26,10 +29,23 @@
     <div class="site">
         {% block header %} {% endblock %}
         {% block main %} {% endblock %}
-    </div>
-    <div class="bottom-wrapper">
         {% block footer %} {% endblock %}
     </div>
+    <!-- js -->
+    <script src="{%static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{%static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{%static 'vendor/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{%static 'vendor/nouislider/nouislider.min.js' %}"></script>
+    <script src="{%static 'vendor/photoswipe/photoswipe.min.js' %}"></script>
+    <script src="{%static 'vendor/photoswipe/photoswipe-ui-default.min.js' %}"></script>
+    <script src="{%static 'vendor/select2/js/select2.min.js' %}"></script>
+    <script src="{%static 'js/number.js' %}"></script>
+    <script src="{%static 'js/main.js' %}"></script>
+    <script src="{%static 'js/header.js' %}"></script>
+    <script src="{%static 'vendor/svg4everybody/svg4everybody.min.js' %}"></script>
+    <script>
+        svg4everybody();
+    </script>
 </body>
 {% endblock %}
 

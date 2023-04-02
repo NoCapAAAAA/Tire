@@ -1,14 +1,16 @@
 from django.db import models
 import datetime
-
+from django.contrib.auth import get_user_model
 from django.db.models import IntegerField
+
+User = get_user_model()
 
 
 class TireSize(models.Model):
     size = models.IntegerField()
 
-    def __str__(self) -> IntegerField:
-        return self.size
+    def __str__(self):
+        return f'{self.size}'
 
     class Meta:
         verbose_name = 'Диаметр шины'
@@ -18,8 +20,8 @@ class TireSize(models.Model):
 class PeriodOfStorage(models.Model):
     period = models.IntegerField()
 
-    def __int__(self) -> IntegerField:
-        return self.period
+    def __str__(self):
+        return f'{self.period} Мес'
 
     class Meta:
         verbose_name = 'Срок хранения'
@@ -28,8 +30,8 @@ class PeriodOfStorage(models.Model):
 class QuantityOfTires(models.Model):
     quantity = models.IntegerField()
 
-    def __int__(self) -> IntegerField:
-        return self.quantity
+    def __str__(self):
+        return f'{self.quantity}'
 
     class Meta:
         verbose_name = 'Количество шин'
@@ -48,12 +50,11 @@ class Status(models.TextChoices):
 
 
 class TireStore(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name="Клиент", on_delete=models.CASCADE)
+    user = models.ForeignKey(verbose_name='Клиент', to=User, on_delete=models.CASCADE)
     quantity = models.ForeignKey(verbose_name='Количество', to=QuantityOfTires, on_delete=models.CASCADE)
     size = models.ForeignKey(verbose_name='Размер шин', to=TireSize, on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=10, decimal_places=2, default=0,blank=True)
     period = models.ForeignKey(verbose_name='Период хранение', to=PeriodOfStorage, on_delete=models.CASCADE)
     status = models.CharField('Статус', default='Ожидает подтверждения', max_length=30,
                               choices=Status.choices, blank=True)
     def __str__(self):
-        return f'{self.user}|{self.price}'
+        return f'{self.user}|{self.quantity}|{self.status}'

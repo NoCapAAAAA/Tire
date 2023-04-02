@@ -5,4 +5,5 @@ from . import views as v
 
 urlpatterns = [
     path('', v.HomeView.as_view(), name='home'),
+    path('order/', v.StartOrder.as_view(), name='order'),
 ]

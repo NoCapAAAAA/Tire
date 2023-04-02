@@ -8,7 +8,7 @@ import datetime
 from django.db.models import Sum
 
 from carwash.models import Service, OrderStatus
-from core.mixins import ExtraContextMixin
+# from core.mixins import ExtraContextMixin
 from carwash import forms as f
 from carwash.utils import get_order_total_sum
 from carwash.models import OrderStatus
@@ -29,7 +29,7 @@ class PricesView(generic.TemplateView):
         'header_selected_index': 1
     }
 
-class HomeView(generic.TemplateView, ExtraContextMixin):
+class HomeView(generic.TemplateView):
     template_name = 'carwash/home.html'
     extra_context = {
         'header_selected_index': 0

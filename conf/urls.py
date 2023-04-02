@@ -16,6 +16,7 @@ urlpatterns = [
     path('api/cars/', include('cars.api.urls'), name='api_cars'),
     path('api-auth/', include('rest_framework.urls'), name='rest_framework'),
     path('', include('tirestorage.urls'), name='tirestorage'),
+    path('carwash/', include('carwash.urls'), name='carwash'),
     path('auth/', include('authentication.urls'), name='authentication'),
     path('profile/', include('profiles.urls'), name='profiles'),
     path('cars/', include('cars.urls'), name='cars'),
