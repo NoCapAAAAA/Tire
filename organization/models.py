@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.db.models import IntegerField
 
@@ -40,21 +41,24 @@ class QuantityOfTires(models.Model):
 from django.conf import settings
 
 
-class Status(models.TextChoices):
-    CREATED = 'Создан', 'Создан'
-    CANCELLED = 'Отменён', 'Отменён'
-    WESTORE = 'На хранении', 'На хранении'
-    COMLETED = 'Завершён', 'Завершён'
-    INWORK = 'Передан в работу', 'Передан в работу'
-    DONE = 'Готов к получению', 'Готов к получению'
+class OrderStatus(models.IntegerChoices):
+    CREATE = 0, 'Создан'
+    STORAGE = 1, 'Находиться на хранении'
+    CANCELED = 2, 'Отменено'
+    FINISH = 3, 'Завершен'
 
 
-class TireStore(models.Model):
+class OrderStorage(models.Model):
     user = models.ForeignKey(verbose_name='Клиент', to=User, on_delete=models.CASCADE)
     quantity = models.ForeignKey(verbose_name='Количество', to=QuantityOfTires, on_delete=models.CASCADE)
     size = models.ForeignKey(verbose_name='Размер шин', to=TireSize, on_delete=models.CASCADE)
     period = models.ForeignKey(verbose_name='Период хранение', to=PeriodOfStorage, on_delete=models.CASCADE)
-    status = models.CharField('Статус', default='Ожидает подтверждения', max_length=30,
-                              choices=Status.choices, blank=True)
+    status = models.IntegerField(verbose_name='Статус заказа', choices=OrderStatus.choices, default=0)
+    create_at = models.DateTimeField('Создан', default=timezone.now)
+
     def __str__(self):
         return f'{self.user}|{self.quantity}|{self.status}'
+
+    class Meta:
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы'

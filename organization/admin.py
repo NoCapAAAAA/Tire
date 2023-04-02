@@ -10,12 +10,12 @@ class TireSize(admin.ModelAdmin):
         model = m.TireSize
 
 
-@admin.register(m.TireStore)
-class TireStore(admin.ModelAdmin):
-    list_display = [field.name for field in m.TireStore._meta.fields]
+@admin.register(m.OrderStorage)
+class OrderStorage(admin.ModelAdmin):
+    list_display = [field.name for field in m.OrderStorage._meta.fields]
 
     class Meta:
-        model = m.TireStore
+        model = m.OrderStorage
 
 
 @admin.register(m.PeriodOfStorage)

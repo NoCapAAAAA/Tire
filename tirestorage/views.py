@@ -9,6 +9,7 @@ import datetime
 from core.mixins import ExtraContextMixin
 from organization import models as m
 from django.shortcuts import HttpResponseRedirect
+from organization.models import OrderStatus
 
 
 class HomeView(generic.TemplateView, ExtraContextMixin):
@@ -22,22 +23,24 @@ class StartOrder(generic.CreateView):
     template_name = 'clientpart/order_create.html'
     success_url = reverse_lazy('home')
     form_class = f.OrderCreateForm
-    queryset = m.TireStore.objects.all()
+    queryset = m.OrderStorage.objects.all()
 
     def get_form(self, form_class=None):
         from organization.models import TireSize, PeriodOfStorage, QuantityOfTires
         if form_class is None:
             form_class = self.get_form_class()
         form = form_class(**self.get_form_kwargs())
-        form.fields['size'].queryset = TireSize.objects.all()
-        form.fields['period'].queryset = PeriodOfStorage.objects.all()
-        form.fields['quantity'].queryset = QuantityOfTires.objects.all()
+        form.fields['size'].queryset = TireSize.objects.all().order_by('size')
+        form.fields['period'].queryset = PeriodOfStorage.objects.all().order_by('period')
+        form.fields['quantity'].queryset = QuantityOfTires.objects.all().order_by('quantity')
         return form
 
     def get_form_kwargs(self):
         ret = super().get_form_kwargs()
         ret['initial'] = {
             'user': self.request.user.pk,
+            'status': OrderStatus.CREATE,
+            'create_at': timezone.now()
         }
         return ret
     # Вывод данных на страниц
