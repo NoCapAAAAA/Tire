@@ -1,9 +1,10 @@
-{% extends 'carwash/base.html' %}
+{% extends 'clientpart/base.html' %}
 
 {% block title %} Авторизация {% endblock %}
 
 {% block main %}
 <main>
+
     <form action="" method="post" class="d-flex flex-column align-items-center mb-4">
         <h1 class="my-4">Авторизация</h1>
         {% csrf_token %}

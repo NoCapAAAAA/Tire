@@ -110,12 +110,18 @@
           <div class="topbar__spring"></div>
           <div class="topbar__item">
             <div class="topbar-dropdown">
+              {% if user.is_authenticated %}
               <button class="topbar-dropdown__btn" type="button">
                 Мой профиль
                 <svg width="7px" height="5px">
                   <use xlink:href="{% static 'images/sprite.svg' %}#arrow-rounded-down-7x5"></use>
                 </svg>
               </button>
+              {% else %}
+              <div class="topbar__item topbar__item--link">
+              <a href="{% url 'login' %}" class="topbar-link">Войти</a>
+                </div>
+              {% endif %}
               <div class="topbar-dropdown__body">
                 <!-- .menu -->
                 <div class="menu menu--layout--topbar ">
@@ -228,58 +234,15 @@
             <div class="nav-panel__nav-links nav-links">
               <ul class="nav-links__list">
                 <li class="nav-links__item  nav-links__item--has-submenu ">
-                  <a class="nav-links__item-link" href="index.html">
+                  <a class="nav-links__item-link" href="{% url 'home' %}">
                     <div class="nav-links__item-body">
-                      Home
+                      Главная
                       <svg class="nav-links__item-arrow" width="9px" height="6px">
                         <use xlink:href="images/sprite.svg#arrow-rounded-down-9x6"></use>
                       </svg>
                     </div>
                   </a>
-                  <div class="nav-links__submenu nav-links__submenu--type--menu">
-                    <!-- .menu -->
-                    <div class="menu menu--layout--classic ">
-                      <div class="menu__submenus-container"></div>
-                      <ul class="menu__list">
-                        <li class="menu__item">
-                          <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                          <div class="menu__item-submenu-offset"></div>
-                          <a class="menu__item-link" href="index.html">
-                                                                Home 1 Slideshow
-                                                            </a>
-                        </li>
-                        <li class="menu__item">
-                          <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                          <div class="menu__item-submenu-offset"></div>
-                          <a class="menu__item-link" href="index-2.html">
-                                                                Home 2 Slideshow
-                                                            </a>
-                        </li>
-                        <li class="menu__item">
-                          <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                          <div class="menu__item-submenu-offset"></div>
-                          <a class="menu__item-link" href="index-3.html">
-                                                                Home 1 Finder
-                                                            </a>
-                        </li>
-                        <li class="menu__item">
-                          <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                          <div class="menu__item-submenu-offset"></div>
-                          <a class="menu__item-link" href="index-4.html">
-                                                                Home 2 Finder
-                                                            </a>
-                        </li>
-                        <li class="menu__item">
-                          <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
-                          <div class="menu__item-submenu-offset"></div>
-                          <a class="menu__item-link" href="offcanvas-cart.html">
-                                                                Offcanvas Cart
-                                                            </a>
-                        </li>
-                      </ul>
-                    </div>
-                    <!-- .menu / end -->
-                  </div>
+
                 </li>
                 <li class="nav-links__item  nav-links__item--has-submenu ">
                   <a class="nav-links__item-link" href="">

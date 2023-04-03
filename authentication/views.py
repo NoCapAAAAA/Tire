@@ -19,6 +19,7 @@ class LoginView(FormView):
     success_url = settings.LOGIN_REDIRECT_URL
 
     def get_success_url(self) -> str:
+
         users_in_group = Group.objects.get(name="Директор").user_set.all()
         users_in_group2 = Group.objects.get(name="Менеджер").user_set.all()
 
@@ -26,7 +27,9 @@ class LoginView(FormView):
             return '/staff/director/'
         elif self.request.user in users_in_group2:
             return '/staff/manager/'
-        return super().get_success_url()
+        else:
+
+            return super().get_success_url()
 
     def form_valid(self, form):
         user = authenticate(self.request, **form.cleaned_data)
@@ -52,7 +55,7 @@ def logout_view(request):
     return redirect('/')
 
 
-class UserEditView(LoginRequiredMixin, UpdateView):
+class UserEditView(UpdateView):
     template_name = 'authentication/user_edit.html'
     form_class = UserEditForm
     success_url = reverse_lazy('user_edit')
@@ -61,7 +64,7 @@ class UserEditView(LoginRequiredMixin, UpdateView):
         return self.request.user
 
 
-class UserDetailView(LoginRequiredMixin, DetailView):
+class UserDetailView(DetailView):
     template_name = 'authentication/user_detail.html'
     model = User
 
@@ -69,7 +72,7 @@ class UserDetailView(LoginRequiredMixin, DetailView):
         return self.request.user
 
 
-class PasswordChangeView(LoginRequiredMixin, UpdateView):
+class PasswordChangeView(UpdateView):
     form_class = CustomPasswordChangeForm
     template_name = 'authentication/password.html'
     success_url = reverse_lazy('home')

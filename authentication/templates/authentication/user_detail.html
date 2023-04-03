@@ -4,45 +4,96 @@
 
 {% block main %}
 <main>
-    <div class="container">
-        <img src="{{ user.photo.url }}" alt="avatar" height="100" class="d-block rounded-circle mx-auto my-4 ">
-        {% if user.is_client %}
-        {% endif %}
-        <table class="table">
-            <tr>
-                <td>Имя пользователя</td>
-                <td>{{ user.username }}</td>
-            </tr>
-            <tr>
-                <td>Электронная почта</td>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <td>Фамилия</td>
-                <td>{{ user.last_name }}</td>
-            </tr>
-            <tr>
-                <td>Имя</td>
-                <td>{{ user.first_name }}</td>
-            </tr>
-            <tr>
-                <td>Отчество</td>
-                <td>{{ user.middle_name }}</td>
-            </tr>
-            <tr>
-                <td>Телефон</td>
-                <td>{{ user.phone_number }}</td>
-            </tr>
-            <tr>
-                <td>Пол</td>
-                <td>{{ user.get_gender_display }}</td>
-            </tr>
-            <tr>
-                <td>Автомобили</td>
-                <td><a href="{% url 'car_list' %}" class="link">Список автомобилей</a></td>
-            </tr>
-        </table>
-        <a href="{% url 'user_edit' %}" class="btn btn-primary ">Редактировать данные</a>
+  <div class="page-header">
+    <div class="page-header__container container">
+
+      <div class="page-header__title">
+        <h1></h1>
+      </div>
     </div>
+  </div>
+  <div class="block">
+    <div class="container">
+      <div class="row">
+        {% include 'authentication/userBase.html' %}
+        <div class="col-12 col-lg-9 mt-4 mt-lg-0">
+          <div class="dashboard">
+            <div class="dashboard__profile card profile-card">
+              <div class="card-body profile-card__body">
+                <div class="profile-card__avatar">
+                  <img src="{{ user.photo.url }}" alt="">
+                </div>
+                <div class="profile-card__name">{{ user.username }}</div>
+                <div class="profile-card__email">{{ user.email }}</div>
+                <div class="profile-card__edit">
+                  <a href="{%url 'user_edit' %}" class="btn btn-secondary btn-sm">Редактировать профиль</a>
+                </div>
+              </div>
+            </div>
+            <div class="dashboard__address card address-card address-card--featured">
+              <div class="address-card__badge">Детальная информация</div>
+              <div class="address-card__body">
+                <div class="address-card__name">{{ user.first_name }} {{ user.last_name }}</div>
+                <div class="address-card__row">
+                </div>
+                <div class="address-card__row">
+                  <div class="address-card__row-title">Номер телефона</div>
+                  <div class="address-card__row-content">{{ user.phone_number }}</div>
+                </div>
+                <div class="address-card__row">
+                  <div class="address-card__row-title">Эл. адрес</div>
+                  <div class="address-card__row-content">{{ user.email }}</div>
+                </div>
+                <div class="address-card__row">
+                  <div class="address-card__row-title">Пол</div>
+                  <div class="address-card__row-content">{{ user.get_gender_display }}</div>
+                </div>
+              </div>
+            </div>
+            <div class="dashboard__orders card">
+              <div class="card-header">
+                <h5>Recent Orders</h5>
+              </div>
+              <div class="card-divider"></div>
+              <div class="card-table">
+                <div class="table-responsive-sm">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Order</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><a href="">#8132</a></td>
+                        <td>02 April, 2019</td>
+                        <td>Pending</td>
+                        <td>$2,719.00 for 5 item(s)</td>
+                      </tr>
+                      <tr>
+                        <td><a href="">#7592</a></td>
+                        <td>28 March, 2019</td>
+                        <td>Pending</td>
+                        <td>$374.00 for 3 item(s)</td>
+                      </tr>
+                      <tr>
+                        <td><a href="">#7192</a></td>
+                        <td>15 March, 2019</td>
+                        <td>Shipped</td>
+                        <td>$791.00 for 4 item(s)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 {% endblock %}
