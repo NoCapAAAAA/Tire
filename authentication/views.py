@@ -3,12 +3,12 @@ from django.contrib.auth import login, logout, authenticate, get_user_model
 from django.conf import settings
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from authentication.forms import (LoginForm, RegisterForm, UserEditForm,
                                   CustomPasswordChangeForm)
 from profiles.forms import ClientProfileForm
 from django.contrib.auth.models import Group
-
+from django.contrib.auth.decorators import login_required
 
 User = get_user_model()
 
@@ -52,16 +52,16 @@ def logout_view(request):
     return redirect('/')
 
 
-class UserEditView(UpdateView):
+class UserEditView(LoginRequiredMixin, UpdateView):
     template_name = 'authentication/user_edit.html'
     form_class = UserEditForm
     success_url = reverse_lazy('user_edit')
 
-    def get_object(self):
+    def get_object(self, **kwargs):
         return self.request.user
 
 
-class UserDetailView(DetailView):
+class UserDetailView(LoginRequiredMixin, DetailView):
     template_name = 'authentication/user_detail.html'
     model = User
 
@@ -69,7 +69,7 @@ class UserDetailView(DetailView):
         return self.request.user
 
 
-class PasswordChangeView(UpdateView):
+class PasswordChangeView(LoginRequiredMixin, UpdateView):
     form_class = CustomPasswordChangeForm
     template_name = 'authentication/password.html'
     success_url = reverse_lazy('home')

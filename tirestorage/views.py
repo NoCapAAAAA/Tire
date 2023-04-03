@@ -14,9 +14,20 @@ from organization.models import OrderStatus
 
 class HomeView(generic.TemplateView, ExtraContextMixin):
     template_name = 'clientpart/home.html'
-    extra_context = {
-        'header_selected_index': 0
-    }
+
+
+class AboutView(generic.TemplateView):
+    template_name = 'clientpart/about_us.html'
+
+
+class ContactView(generic.TemplateView):
+    template_name = 'clientpart/contact.html'
+
+
+class OrderListView(generic.TemplateView):
+    template_name = 'clientpart/order-list.html'
+
+
 
 from tirestorage import forms as f
 class StartOrder(generic.CreateView):
