@@ -80,24 +80,24 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'postgres2',
+    #     'HOST': 'localhost',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'admin',
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test7',
-        'HOST': 'localhost',
-        'USER': 'postgres',
-        'PASSWORD': 'admin'
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test',
+        'HOST': '127.0.0.1',
+        'USER': 'root',
+        'PASSWORD': 'J^$RCE&^$53exydftutkg',
+        'PORT': '3306'
     },
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'avtomoika1',
-    #     'HOST': '127.0.0.1',
-    #     'USER': 'root',
-    #     'PASSWORD': '1234',
-    #     'PORT': '3306'
-    # },
-    # 'default': {
     #     'ENGINE': 'mssql',
-    #     'NAME': 'avtomoika1',
+    #     'NAME': 'avtomoika1',J^$RCE&^$53exydftutkg
     #     'HOST': 'localhost\SQLEXPRESS',
     #     'USER': 'root',
     #     'PASSWORD': '1234',

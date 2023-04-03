@@ -3,7 +3,7 @@ import datetime
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.db.models import IntegerField
-
+from core.models import AbstractTimestampedModel
 User = get_user_model()
 
 
@@ -48,7 +48,7 @@ class OrderStatus(models.IntegerChoices):
     FINISH = 3, 'Завершен'
 
 
-class OrderStorage(models.Model):
+class OrderStorage(AbstractTimestampedModel):
     user = models.ForeignKey(verbose_name='Клиент', to=User, on_delete=models.CASCADE)
     quantity = models.ForeignKey(verbose_name='Количество', to=QuantityOfTires, on_delete=models.CASCADE)
     size = models.ForeignKey(verbose_name='Размер шин', to=TireSize, on_delete=models.CASCADE)
