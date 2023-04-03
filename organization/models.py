@@ -1,8 +1,6 @@
 from django.db import models
-import datetime
 from django.utils import timezone
 from django.contrib.auth import get_user_model
-from django.db.models import IntegerField
 from core.models import AbstractTimestampedModel
 User = get_user_model()
 
@@ -48,16 +46,20 @@ class OrderStatus(models.IntegerChoices):
     FINISH = 3, 'Завершен'
 
 
-class OrderStorage(AbstractTimestampedModel):
+class OrderStorage(models.Model):
     user = models.ForeignKey(verbose_name='Клиент', to=User, on_delete=models.CASCADE)
     quantity = models.ForeignKey(verbose_name='Количество', to=QuantityOfTires, on_delete=models.CASCADE)
     size = models.ForeignKey(verbose_name='Размер шин', to=TireSize, on_delete=models.CASCADE)
     period = models.ForeignKey(verbose_name='Период хранение', to=PeriodOfStorage, on_delete=models.CASCADE)
     status = models.IntegerField(verbose_name='Статус заказа', choices=OrderStatus.choices, default=0)
-    create_at = models.DateTimeField('Создан', default=timezone.now)
+    is_payed = models.BooleanField(verbose_name='Оплачено', default=False)
+    payed_at = models.DateTimeField(verbose_name='Дата оплаты', blank=True, null=True)
+    created_at = models.DateTimeField(verbose_name='Создано', default=timezone.now())
+    updated_at = models.DateTimeField(verbose_name='Обновлено', default=timezone.now())
 
-    def __str__(self):
-        return f'{self.user}|{self.quantity}|{self.status}'
+    def __str__(self) -> str:
+        return f'{self.user} {self.period}'
+
 
     class Meta:
         verbose_name = 'Заказ'

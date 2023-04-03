@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.utils import timezone
+
 from organization import models as m
 
 
@@ -10,12 +12,20 @@ class TireSize(admin.ModelAdmin):
         model = m.TireSize
 
 
+
+
 @admin.register(m.OrderStorage)
 class OrderStorage(admin.ModelAdmin):
     list_display = [field.name for field in m.OrderStorage._meta.fields]
 
     class Meta:
         model = m.OrderStorage
+
+    # def get_rangefilter_created_at_default(self, request):
+    #     return (timezone.now().today(), timezone.now().today())
+    #
+    # def get_rangefilter_created_at_title(self, request, field_path):
+    #     return 'Дата оформления'
 
 
 @admin.register(m.PeriodOfStorage)

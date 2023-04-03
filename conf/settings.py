@@ -79,34 +79,39 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+# DATABASES = {
+#     # 'default': {
+#     #     'ENGINE': 'django.db.backends.postgresql',
+#     #     'NAME': 'postgres2',
+#     #     'HOST': 'localhost',
+#     #     'USER': 'postgres',
+#     #     'PASSWORD': 'admin',
+#     # },
+#     # 'default': {
+#     #     'ENGINE': 'django.db.backends.mysql',
+#     #     'NAME': 'database_name',
+#     #     'HOST': '127.0.0.1',
+#     #     'USER': 'root',
+#     #     'PASSWORD': 'J^$RCE&^$53exydftutkg',
+#     #     'PORT': '3306'
+#     # },
+#     # 'default': {
+#     #     'ENGINE': 'mssql',
+#     #     'NAME': 'avtomoika1',J^$RCE&^$53exydftutkg
+#     #     'HOST': 'localhost\SQLEXPRESS',
+#     #     'USER': 'root',
+#     #     'PASSWORD': '1234',
+#     #     "OPTIONS": {
+#     #         "driver": "ODBC Driver 17 for SQL Server",
+#     #     },
+#     # }
+# }
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'postgres2',
-    #     'HOST': 'localhost',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'admin',
-    # },
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test',
-        'HOST': '127.0.0.1',
-        'USER': 'root',
-        'PASSWORD': 'J^$RCE&^$53exydftutkg',
-        'PORT': '3306'
-    },
-    # 'default': {
-    #     'ENGINE': 'mssql',
-    #     'NAME': 'avtomoika1',J^$RCE&^$53exydftutkg
-    #     'HOST': 'localhost\SQLEXPRESS',
-    #     'USER': 'root',
-    #     'PASSWORD': '1234',
-    #     "OPTIONS": {
-    #         "driver": "ODBC Driver 17 for SQL Server", 
-    #     },
-    # }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
-
 
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.UnsaltedMD5PasswordHasher'
