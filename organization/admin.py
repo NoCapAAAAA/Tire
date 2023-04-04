@@ -44,3 +44,9 @@ class QuantityOfTires(admin.ModelAdmin):
         model = m.QuantityOfTires
 
 
+@admin.register(m.AdressSirvice)
+class AdressSirvice(admin.ModelAdmin):
+    list_display = [field.name for field in m.AdressSirvice._meta.fields]
+
+    class Meta:
+        model = m.AdressSirvice

@@ -30,6 +30,11 @@ class OrderListView(generic.TemplateView):
 
 
 from tirestorage import forms as f
+
+
+
+
+
 class StartOrder(generic.CreateView):
     template_name = 'clientpart/order_create.html'
     success_url = reverse_lazy('home')
@@ -52,8 +57,5 @@ class StartOrder(generic.CreateView):
         ret['initial'] = {
             'user': self.request.user.pk,
             'status': OrderStatus.CREATE,
-            'create_at': timezone.now(),
-            'update_at': timezone.now(),
-
         }
         return ret

@@ -46,7 +46,7 @@ class OrderStatus(models.IntegerChoices):
     FINISH = 3, 'Завершен'
 
 
-class AdressSirvice(models.CharField):
+class AdressSirvice(models.Model):
     adress = models.CharField(verbose_name='Адрес сервиса', max_length=125,)
 
     def __str__(self):
@@ -62,15 +62,25 @@ class OrderStorage(models.Model):
     quantity = models.ForeignKey(verbose_name='Количество', to=QuantityOfTires, on_delete=models.CASCADE)
     size = models.ForeignKey(verbose_name='Размер шин', to=TireSize, on_delete=models.CASCADE)
     period = models.ForeignKey(verbose_name='Период хранение', to=PeriodOfStorage, on_delete=models.CASCADE)
-    adress = models.ForeignKey(to=AdressSirvice, verbose_name='Адрес сервиса', on_delete=models.CASCADE)
+    adress = models.ForeignKey(verbose_name='Адрес сервиса', to=AdressSirvice, on_delete=models.CASCADE)
     status = models.IntegerField(verbose_name='Статус заказа', choices=OrderStatus.choices, default=0)
     is_payed = models.BooleanField(verbose_name='Оплачено', default=False)
     payed_at = models.DateTimeField(verbose_name='Дата оплаты', blank=True, null=True)
-    created_at = models.DateTimeField(verbose_name='Создано', default=timezone.now())
-    updated_at = models.DateTimeField(verbose_name='Обновлено', default=timezone.now())
+    created_at = models.DateTimeField(verbose_name='Создано', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Обновлено', auto_now=True)
 
     def __str__(self) -> str:
         return f'{self.user} {self.period}'
+
+    def __init__(self, *args, **kwargs) -> None:
+        super().__init__(*args, **kwargs)
+        self.__original_is_payed = self.is_payed
+
+    def save(self, force_insert=False, force_update=False, *args, **kwargs) -> None:
+        if self.is_payed != self.__original_is_payed:
+            self.payed_at = timezone.now()
+            self.__original_is_payed = self.is_payed
+        return super().save(force_insert, force_update, *args, **kwargs)
 
 
     class Meta:
