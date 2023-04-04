@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from core.models import AbstractTimestampedModel
@@ -68,6 +69,9 @@ class OrderStorage(models.Model):
     payed_at = models.DateTimeField(verbose_name='Дата оплаты', blank=True, null=True)
     created_at = models.DateTimeField(verbose_name='Создано', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='Обновлено', auto_now=True)
+
+    def get_absolute_url(self):
+        return reverse('order_detail', kwargs={'pk': self.pk})
 
     def __str__(self) -> str:
         return f'{self.user} {self.period}'

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django import views
 from django.http import HttpResponse
@@ -6,6 +7,9 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.utils import timezone
 import datetime
+
+from django.views.generic import TemplateView, DetailView
+
 from core.mixins import ExtraContextMixin
 from organization import models as m
 from django.shortcuts import HttpResponseRedirect
@@ -24,10 +28,6 @@ class ContactView(generic.TemplateView):
     template_name = 'clientpart/contact.html'
 
 
-class OrderListView(generic.TemplateView):
-    template_name = 'clientpart/order-list.html'
-
-
 
 from tirestorage import forms as f
 
@@ -37,7 +37,7 @@ from tirestorage import forms as f
 
 class StartOrder(generic.CreateView):
     template_name = 'clientpart/order_create.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('order-list')
     form_class = f.OrderCreateForm
     queryset = m.OrderStorage.objects.all()
 
@@ -59,3 +59,21 @@ class StartOrder(generic.CreateView):
             'status': OrderStatus.CREATE,
         }
         return ret
+
+
+class OrderListView(LoginRequiredMixin, TemplateView):
+    template_name = "clientpart/order-list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['orders'] = m.OrderStorage.objects.filter(user=self.request.user)
+        return context
+
+
+class DetailOrderView(DetailView):
+    template_name = "clientpart/order-detail.html"
+    model = m.OrderStorage
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['detail'] = m.OrderStorage.objects.filter(pk=self.kwargs['pk'])
+        return context

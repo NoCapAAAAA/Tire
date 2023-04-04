@@ -1,0 +1,79 @@
+{% extends 'clientpart/base.html' %}
+{% load static %}
+{% block title %} Заказ # {% endblock %}
+
+{% block main %}
+
+<main>
+  <div class="page-header">
+    <div class="page-header__container container">
+
+      <div class="page-header__title">
+        <h1></h1>
+      </div>
+    </div>
+  </div>
+  <div class="block">
+    <div class="container">
+      <div class="row">
+        {% include 'authentication/userBase.html' %}
+        {% for order in detail %}
+        <div class="col-12 col-lg-9 mt-4 mt-lg-0">
+          <div class="card">
+            <div class="order-header">
+              <div class="order-header__actions">
+                <a href="{% url 'order-list' %}" class="btn btn-xs btn-secondary">Назад к списку</a>
+              </div>
+              <h5 class="order-header__title">Номер {{order.id}}</h5>
+              <div class="order-header__subtitle">
+                Оформлен
+                <mark class="order-header__date">{{order.created_at}}</mark>
+
+              </div>
+            </div>
+            <div class="card-divider"></div>
+            <div class="card-table">
+              <div class="table-responsive-sm">
+                <table>
+                  <tfoot>
+                    <tr>
+                      <th>Total</th>
+                      <td>$5,882.00</td>
+                    </tr>
+                  </tfoot>
+                  <tfoot>
+                    <tr>
+                      <th>Статус</th>
+                      <td>{{ order.get_status_display }}</td>
+                    </tr>
+                  </tfoot>
+                  <tfoot>
+                    <tr>
+                      <th>Размер шин</th>
+                      <td>{{ order.size }}</td>
+                    </tr>
+                  </tfoot>
+                  <tfoot>
+                    <tr>
+                      <th>Срок хранения</th>
+                      <td>{{ order.period }}</td>
+                    </tr>
+                  </tfoot>
+
+                  <tfoot>
+                    <tr>
+                      <th>Количество шин</th>
+                      <td>{{ order.quantity }}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

@@ -35,8 +35,8 @@ class User(AbstractUser):
         return f'{self.last_name} {self.first_name} {self.middle_name}'
     
     def get_first_order_date(self):
-        return self.order_set.order_by('created_at').first().created_at
-    
+        return self.OrderStorage.order_by('created_at').first().created_at
+
     def is_client(self):
         try:
             self.clientprofile
