@@ -37,13 +37,14 @@ class StartOrder(generic.CreateView):
     queryset = m.OrderStorage.objects.all()
 
     def get_form(self, form_class=None):
-        from organization.models import TireSize, PeriodOfStorage, QuantityOfTires
+        from organization.models import TireSize, PeriodOfStorage, QuantityOfTires, AdressSirvice
         if form_class is None:
             form_class = self.get_form_class()
         form = form_class(**self.get_form_kwargs())
         form.fields['size'].queryset = TireSize.objects.all().order_by('size')
         form.fields['period'].queryset = PeriodOfStorage.objects.all().order_by('period')
         form.fields['quantity'].queryset = QuantityOfTires.objects.all().order_by('quantity')
+        form.fields['adress'].queryset = AdressSirvice.objects.all().order_by('adress')
         return form
 
     def get_form_kwargs(self):
@@ -51,7 +52,8 @@ class StartOrder(generic.CreateView):
         ret['initial'] = {
             'user': self.request.user.pk,
             'status': OrderStatus.CREATE,
-            'create_at': timezone.now()
+            'create_at': timezone.now(),
+            'update_at': timezone.now(),
+
         }
         return ret
-    # Вывод данных на страниц

@@ -46,11 +46,23 @@ class OrderStatus(models.IntegerChoices):
     FINISH = 3, 'Завершен'
 
 
+class AdressSirvice(models.CharField):
+    adress = models.CharField(verbose_name='Адрес сервиса', max_length=125,)
+
+    def __str__(self):
+        return f'{self.adress}'
+
+    class Meta:
+        verbose_name = 'Адрес сервиса'
+        verbose_name_plural = 'Адреса сервисов'
+
+
 class OrderStorage(models.Model):
     user = models.ForeignKey(verbose_name='Клиент', to=User, on_delete=models.CASCADE)
     quantity = models.ForeignKey(verbose_name='Количество', to=QuantityOfTires, on_delete=models.CASCADE)
     size = models.ForeignKey(verbose_name='Размер шин', to=TireSize, on_delete=models.CASCADE)
     period = models.ForeignKey(verbose_name='Период хранение', to=PeriodOfStorage, on_delete=models.CASCADE)
+    adress = models.ForeignKey(to=AdressSirvice, verbose_name='Адрес сервиса', on_delete=models.CASCADE)
     status = models.IntegerField(verbose_name='Статус заказа', choices=OrderStatus.choices, default=0)
     is_payed = models.BooleanField(verbose_name='Оплачено', default=False)
     payed_at = models.DateTimeField(verbose_name='Дата оплаты', blank=True, null=True)
