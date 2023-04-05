@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import FormView, UpdateView, DetailView, TemplateView
-
+from . import models as m
 
 class DirectorHomeView(TemplateView):
     template_name = 'director/home.html'
@@ -8,6 +8,11 @@ class DirectorHomeView(TemplateView):
 
 class DirectorOrdersView(TemplateView):
     template_name = 'director/orders.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['orders'] = m.OrderStorage.objects.all()
+        return context
 
 
 class DirectorUsersView(TemplateView):
