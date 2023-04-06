@@ -159,7 +159,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-LOGIN_REDIRECT_URL = reverse_lazy('user_detail')
+LOGIN_REDIRECT_URL = reverse_lazy('/')
 # LOGOUT_REDIRECT_URL = '/login/'
 
 # Default primary key field type

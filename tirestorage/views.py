@@ -46,9 +46,13 @@ class StartOrder(generic.CreateView):
         if form_class is None:
             form_class = self.get_form_class()
         form = form_class(**self.get_form_kwargs())
+
         form.fields['size'].queryset = TireSize.objects.all().order_by('size')
+
         form.fields['period'].queryset = PeriodOfStorage.objects.all().order_by('period')
+
         form.fields['quantity'].queryset = QuantityOfTires.objects.all().order_by('quantity')
+
         form.fields['adress'].queryset = AdressSirvice.objects.all().order_by('adress')
         return form
 
