@@ -21,7 +21,7 @@ class PeriodOfStorage(models.Model):
     period = models.IntegerField()
 
     def __str__(self):
-        return f'{self.period} Мес'
+        return f'{self.period}'
 
     class Meta:
         verbose_name = 'Срок хранения'
@@ -35,9 +35,6 @@ class QuantityOfTires(models.Model):
 
     class Meta:
         verbose_name = 'Количество шин'
-
-
-from django.conf import settings
 
 
 class OrderStatus(models.IntegerChoices):
@@ -60,11 +57,12 @@ class AdressSirvice(models.Model):
 
 class OrderStorage(models.Model):
     user = models.ForeignKey(verbose_name='Клиент', to=User, on_delete=models.CASCADE)
-    quantity = models.ForeignKey(verbose_name='Количество', to=QuantityOfTires, on_delete=models.CASCADE)
-    size = models.ForeignKey(verbose_name='Размер шин', to=TireSize, on_delete=models.CASCADE)
-    period = models.ForeignKey(verbose_name='Период хранение', to=PeriodOfStorage, on_delete=models.CASCADE)
-    adress = models.ForeignKey(verbose_name='Адрес сервиса', to=AdressSirvice, on_delete=models.CASCADE)
+    quantity = models.ForeignKey(verbose_name='Количество', blank=True, null=True, to=QuantityOfTires, on_delete=models.CASCADE)
+    size = models.IntegerField(verbose_name='Размер шин', blank=True, null=True,)
+    period = models.IntegerField(verbose_name='Период хранение', blank=True, null=True,)
+    adress = models.CharField(verbose_name='Адрес сервиса', blank=True, null=True, max_length=125)
     status = models.IntegerField(verbose_name='Статус заказа', choices=OrderStatus.choices, default=0)
+    price = models.DecimalField(verbose_name='Цена', max_digits=10, decimal_places=2)
     is_payed = models.BooleanField(verbose_name='Оплачено', default=False)
     payed_at = models.DateTimeField(verbose_name='Дата оплаты', blank=True, null=True)
     created_at = models.DateTimeField(verbose_name='Создано', auto_now_add=True)
@@ -85,7 +83,6 @@ class OrderStorage(models.Model):
             self.payed_at = timezone.now()
             self.__original_is_payed = self.is_payed
         return super().save(force_insert, force_update, *args, **kwargs)
-
 
     class Meta:
         verbose_name = 'Заказ'
