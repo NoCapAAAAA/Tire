@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="de2c7e49-9ded-4c06-a24a-2830d90a403c" name="Changes" comment="я в отчаиние">
+      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/organization/migrations/0002_alter_orderstorage_adress_alter_orderstorage_period_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/organization/migrations/0003_remove_orderstorage_quantity_and_more.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/TireStorageTest1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cars/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/cars/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cars/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/cars/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cars/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/cars/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cars/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/cars/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carwash/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/carwash/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carwash/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/carwash/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carwash/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/carwash/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/conf/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/migrations/0002_alter_orderstorage_period_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/migrations/0003_alter_orderstorage_price_delete_price.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/migrations/0004_alter_orderstorage_adress_alter_orderstorage_period_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiles/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiles/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tirestorage/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tirestorage/templates/clientpart/order-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/templates/clientpart/order-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tirestorage/templates/clientpart/order_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/templates/clientpart/order_create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tirestorage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2Nuj4DIWhohCo3nyf0Y8tk4fL2w" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/PycharmProjects/Tire/organization&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\PycharmProjects\Tire\organization" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de2c7e49-9ded-4c06-a24a-2830d90a403c" name="Changes" comment="" />
+      <created>1680520668704</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680520668704</updated>
+    </task>
+    <task id="LOCAL-00001" summary="что-то">
+      <created>1680521357228</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680521357228</updated>
+    </task>
+    <task id="LOCAL-00002" summary="что-то">
+      <created>1680529174719</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680529174719</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Адаптировал шаблон профиль пользователя, навигация на его странице работает кроме страницы заказы.">
+      <created>1680617412601</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1680617412601</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Merge remote-tracking branch 'origin/master'">
+      <created>1680630101224</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680630101224</updated>
+    </task>
+    <task id="LOCAL-00005" summary="заказ оформляется со стороны пользователя нормально">
+      <created>1680634528833</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680634528833</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Просмотр истории заказов, детальный просомтр заказа. Вроде работает, использовал говно">
+      <created>1680691236523</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680691236523</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Merge remote-tracking branch 'origin/master'">
+      <created>1680691251188</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1680691251188</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Merge remote-tracking branch 'origin/master'">
+      <created>1680694659579</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680694659579</updated>
+    </task>
+    <task id="LOCAL-00009" summary="я в отчаиние">
+      <created>1680807823440</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1680807823440</updated>
+    </task>
+    <task id="LOCAL-00010" summary="я в отчаиние">
+      <created>1680872520187</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680872520187</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="что-то" />
+    <MESSAGE value="Адаптировал шаблон профиль пользователя, навигация на его странице работает кроме страницы заказы." />
+    <MESSAGE value="заказ оформляется со стороны пользователя нормально" />
+    <MESSAGE value="Просмотр истории заказов, детальный просомтр заказа. Вроде работает, использовал говно" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
+    <MESSAGE value="я в отчаиние" />
+    <option name="LAST_COMMIT_MESSAGE" value="я в отчаиние" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
