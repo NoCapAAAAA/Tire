@@ -45,10 +45,15 @@ from docx.shared import Inches
 from datetime import date
 from io import BytesIO
 from datetime import datetime, date, time
+import locale
 
 
 
 def TestDocument(request):
+    locale.setlocale(
+        category=locale.LC_ALL,
+        locale="Russian"  # Note: do not use "de_DE" as it doesn't work
+    )
     current_datetime = datetime.now()
     str_current_datetime = str(current_datetime)
     document = Document()
@@ -57,21 +62,11 @@ def TestDocument(request):
     document.add_paragraph()
     document.add_paragraph("%s" % date.today().strftime('%B %d, %Y'))
 
-    document.add_paragraph('Welcome to Tuts-Station.com!')
-    document.add_paragraph('Tuts-Station Blog provides you latest Code Tutorials on PHP, Laravel, Codeigniter, JQuery, Node js, React js, Vue js, PHP, and Javascript. Mobile technologies like Android, React Native, Ionic etc.')
-
-    document.add_paragraph()
-    document.add_paragraph('Thank You!!,')
-    document.add_paragraph('Tuts-Station.com')
-    qs = m.OrderStorage.objects.all().order_by('pk')
-    dictqs = list(qs)
-    qstring = str(dictqs)
-
-    document.add_paragraph(qstring)
+    document.add_paragraph('Отчёт о заказах')
     qs2 = m.OrderStorage.objects.all().order_by('pk')
-    qs2count = qs2.count()
-    print(qs2.__dict__)
-    table = document.add_table(rows=100, cols=11)
+    qs2count = qs2.count() + 1
+    print(qs2count)
+    table = document.add_table(rows=qs2count, cols=8)
     table.style = 'Table Grid'
     table.cell(0, 0).text = 'Номер заказа'
     table.cell(0, 1).text = 'Клиент'
@@ -81,14 +76,27 @@ def TestDocument(request):
     table.cell(0, 5).text = 'Статус заказа'
     table.cell(0, 6).text = 'Стоимость заказа'
     table.cell(0, 7).text = 'Оплачен'
-    table.cell(0, 8).text = 'Дата оплаты'
-    table.cell(0, 9).text = 'Создано'
-    table.cell(0, 10).text = 'Обновлено'
+
     # Creating a table object
 
     for order in m.OrderStorage.objects.all().order_by('pk'):
+
         row = order.pk
         table.cell(row, 0).text = str(order.pk)
+        table.cell(row, 1).text = str(order.user)
+        table.cell(row, 2).text = str(order.size)
+        table.cell(row, 3).text = str(order.period)
+        if order.adress == None:
+            order.adress = "---"
+        table.cell(row, 4).text = str(order.adress)
+        table.cell(row, 5).text = str(order.get_status_display())
+        table.cell(row, 6).text = str(order.price)
+        if order.is_payed == True:
+            order.is_payed = "Да"
+        else:
+            order.is_payed = "Нет"
+        table.cell(row, 7).text = str(order.is_payed)
+
 
 
 

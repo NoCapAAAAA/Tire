@@ -11,7 +11,7 @@ urlpatterns = [
     path('director/stuff', v.DirectorStuffView.as_view(), name='directorStuff'),
     path('director/orders', v.DirectorOrdersView.as_view(), name='directorOrders'),
     path('director/statistics', v.DirectorStatisticsView.as_view(), name='directorStatistics'),
-    path('docs/', views.TestDocument, name='download'),
+    path('docs/', views.TestDocument, name='report_download'),
 
     path('manager/', v.ManagerHomeView.as_view(), name='managerHome'),
 
