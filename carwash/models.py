@@ -5,9 +5,7 @@ from django.utils import timezone
 
 from cars.models import Car, CarClass
 from core.models import AbstractTimestampedModel
-
-
-User = get_user_model()
+from conf import settings
 
 
 class Service(models.Model):
@@ -30,7 +28,7 @@ class Price(models.Model):
         verbose_name='Класс', to=CarClass, on_delete=models.CASCADE)
     price = models.DecimalField(
         verbose_name='Цена', max_digits=10, decimal_places=2)
-    
+
     def __str__(self) -> str:
         return f'{self.service} {self.car_class} {self.price}'
 
@@ -47,8 +45,8 @@ class OrderStatus(models.IntegerChoices):
 
 
 class Order(AbstractTimestampedModel):
-    client = models.ForeignKey(
-        verbose_name='Клиент', to=User, on_delete=models.CASCADE)
+    client = models.ForeignKey(settings.AUTH_USER_MODEL,
+        verbose_name='Клиент',on_delete=models.CASCADE)
     price = models.ForeignKey(
         verbose_name='Цена', to=Price, on_delete=models.CASCADE)
     car = models.ForeignKey(verbose_name='Авто', to=Car,
@@ -71,14 +69,13 @@ class Order(AbstractTimestampedModel):
         except:
             return None
 
-
     def __str__(self) -> str:
         return f'{self.client} {self.car}'
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)
         self.__original_is_payed = self.is_payed
-    
+
     def save(self, force_insert=False, force_update=False, *args, **kwargs) -> None:
         if self.is_payed != self.__original_is_payed:
             self.payed_at = timezone.now()

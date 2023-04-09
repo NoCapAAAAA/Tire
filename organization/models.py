@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.contrib.auth import get_user_model
 from core.models import AbstractTimestampedModel
 User = get_user_model()
+from conf.settings import AUTH_USER_MODEL
 
 
 class TireSize(models.Model):
@@ -56,8 +57,15 @@ class AdressSirvice(models.Model):
 
 
 class OrderStorage(models.Model):
-    user = models.ForeignKey(verbose_name='Клиент', to=User, on_delete=models.CASCADE)
-    quantity = models.ForeignKey(verbose_name='Количество', blank=True, null=True, to=QuantityOfTires, on_delete=models.CASCADE)
+    user = models.ForeignKey(AUTH_USER_MODEL, verbose_name='Клиент', on_delete=models.CASCADE)
+    # quantity = models.ForeignKey(verbose_name='Количество', blank=True, null=True, to=QuantityOfTires, on_delete=models.CASCADE)
+    # size = models.ForeignKey(verbose_name='Размер', blank=True, null=True, to=TireSize,
+    #                              on_delete=models.CASCADE)
+    # period = models.ForeignKey(verbose_name='Период', blank=True, null=True, to=PeriodOfStorage,
+    #                              on_delete=models.CASCADE)
+    # adress = models.ForeignKey(verbose_name='Адрес', blank=True, null=True, to=AdressSirvice,
+    #                              on_delete=models.CASCADE)
+
     size = models.IntegerField(verbose_name='Размер шин', blank=True, null=True,)
     period = models.IntegerField(verbose_name='Период хранение', blank=True, null=True,)
     adress = models.CharField(verbose_name='Адрес сервиса', blank=True, null=True, max_length=125)
@@ -72,7 +80,7 @@ class OrderStorage(models.Model):
         return reverse('order_detail', kwargs={'pk': self.pk})
 
     def __str__(self) -> str:
-        return f'{self.user} {self.period}'
+        return f'{self.user} {self.period} {self.size} {self.adress} {self.status} {self.price} {self.is_payed} {self.payed_at} {self.created_at} {self.updated_at}'
 
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(*args, **kwargs)

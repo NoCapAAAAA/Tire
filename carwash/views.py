@@ -8,7 +8,7 @@ import datetime
 from django.db.models import Sum
 
 from carwash.models import Service, OrderStatus
-# from core.mixins import ExtraContextMixin
+from core.mixins import ExtraContextMixin
 from carwash import forms as f
 from carwash.utils import get_order_total_sum
 from carwash.models import OrderStatus
@@ -25,15 +25,17 @@ class AboutView(generic.TemplateView):
 class PricesView(generic.TemplateView):
     template_name = 'carwash/prices.html'
     extra_context = {
-        'services': Service.objects.all(), 
+        'services': Service.objects.all(),
         'header_selected_index': 1
     }
 
-class HomeView(generic.TemplateView):
+
+class HomeView(generic.TemplateView, ExtraContextMixin):
     template_name = 'carwash/home.html'
     extra_context = {
         'header_selected_index': 0
     }
+
 
 class ContactsView(generic.CreateView):
     template_name = 'carwash/contacts.html'
@@ -49,13 +51,16 @@ class OrderListView(generic.ListView):
     template_name = 'carwash/order_list.html'
     template_name_report = 'carwash/order_report.html'
     context_object_name = 'orders'
+
     def is_report(self):
         is_report = self.request.GET.get('report', None)
         return is_report is not None
+
     def get_template_names(self) -> list[str]:
         if self.is_report():
             return self.template_name_report
         return self.template_name
+
     # def get_order_total_sum(self):
     #     orders = self.get_queryset()
     #     sum = 0
@@ -75,7 +80,7 @@ class OrderListView(generic.ListView):
             date2 = (strptime(self.request.GET.get('date_until'), r'%Y-%m-%d'))
         except TypeError:
             date1, date2 = self.get_date_range_default()
-        
+
         if date1 > date2:
             date1, date2 = date2, date1
         return date1, date2
@@ -140,11 +145,13 @@ def order_pay(request, pk):
     print(order.payed_at)
     return redirect(reverse_lazy('order_list'))
 
+
 def order_cancel(request, pk):
     order = get_object_or_404(m.Order, pk=pk)
     order.status = m.OrderStatus.CANCELED
     order.save()
     return redirect(reverse_lazy('order_detail', kwargs={'pk': pk}))
+
 
 def cheque(request, pk):
     order = get_object_or_404(m.Order, pk=pk)
@@ -170,17 +177,22 @@ class CallApplicationCreateView(generic.CreateView):
 def contactless_wash(request):
     return render(request, 'carwash/contactless_wash.html')
 
+
 def complex_wash(request):
     return render(request, 'carwash/complex_wash.html')
+
 
 def nano_wash(request):
     return render(request, 'carwash/nano_wash.html')
 
+
 def ceramic_wash(request):
     return render(request, 'carwash/ceramic_wash.html')
 
+
 def bottom_wash(request):
     return render(request, 'carwash/bottom_wash.html')
+
 
 def engine_wash(request):
     return render(request, 'carwash/engine_wash.html')

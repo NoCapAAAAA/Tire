@@ -6,6 +6,9 @@ from django.views.generic import TemplateView, DetailView
 from core.mixins import ExtraContextMixin
 from organization import models as m
 from django.contrib.auth import get_user_model
+from tirestorage import forms as f
+from organization.models import OrderStatus
+
 User = get_user_model()
 
 
@@ -32,9 +35,8 @@ class ContactView(generic.TemplateView):
 #         if form_class is None:
 #             form_class = self.get_form_class()
 #         form = form_class(**self.get_form_kwargs())
-#         form.fields['size'].queryset = TireSize.objects.all().order_by('size')
-#         form.fields['period'].queryset = PeriodOfStorage.objects.all().order_by('period')
-#         form.fields['quantity'].queryset = QuantityOfTires.objects.all().order_by('quantity')
+#         print(form.fields['size'])
+#
 #
 #         return form
 #
@@ -45,6 +47,8 @@ class ContactView(generic.TemplateView):
 #             'status': OrderStatus.CREATE,
 #         }
 #         return ret
+
+
 class StartOrder(LoginRequiredMixin, TemplateView):
     template_name = "clientpart/order_create.html"
     success_url = reverse_lazy('order-list')
@@ -55,6 +59,7 @@ class StartOrder(LoginRequiredMixin, TemplateView):
         context['period'] = m.PeriodOfStorage.objects.all().order_by('period')
         return context
 
+    # noinspection PyUnboundLocalVariable
     def post(self, request):
         data = dict(request.POST)
         print(data)
@@ -65,25 +70,21 @@ class StartOrder(LoginRequiredMixin, TemplateView):
         price_5700 = [20, 21, 21]
         if tire_size in price_3500:
             price = 3500
-            print("Цена услуги", price)
         elif tire_size in price_4000:
             price = 4000
-            print("Цена услуги", price)
         elif tire_size in price_4700:
             price = 4700
-            print("Цена услуги", price)
         elif tire_size in price_5700:
             price = 5700
-            print("Цена услуги", price)
         create = m.OrderStorage.objects.create(user=self.request.user,
                                                size=data.get('Tiresize')[0],
                                                period=data.get('Period')[0],
                                                price=price
                                                )
         if create:
-            print('Круто')
+            print('Успех')
         else:
-            print('Я тупая вагина')
+            print('Не успех')
         return HttpResponseRedirect(self.success_url)
 
 

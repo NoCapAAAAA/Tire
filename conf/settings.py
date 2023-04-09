@@ -80,24 +80,24 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 # DATABASES = {
-#     # 'default': {
+#     # 'pgsql': {
 #     #     'ENGINE': 'django.db.backends.postgresql',
-#     #     'NAME': 'postgres2',
-#     #     'HOST': 'localhost',
-#     #     'USER': 'postgres',
-#     #     'PASSWORD': 'admin',
-#     # },
-#     # 'default': {
-#     #     'ENGINE': 'django.db.backends.mysql',
-#     #     'NAME': 'database_name',
+#     #     'NAME': 'avtomoika1',
 #     #     'HOST': '127.0.0.1',
-#     #     'USER': 'root',
-#     #     'PASSWORD': 'J^$RCE&^$53exydftutkg',
-#     #     'PORT': '3306'
+#     #     'USER': 'postgres',
+#     #     'PASSWORD': '1234'
 #     # },
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'avtomoika1',
+#         'HOST': '127.0.0.1',
+#         'USER': 'root',
+#         'PASSWORD': '1234',
+#         'PORT': '3306'
+#     },
 #     # 'default': {
 #     #     'ENGINE': 'mssql',
-#     #     'NAME': 'avtomoika1',J^$RCE&^$53exydftutkg
+#     #     'NAME': 'avtomoika1',
 #     #     'HOST': 'localhost\SQLEXPRESS',
 #     #     'USER': 'root',
 #     #     'PASSWORD': '1234',
@@ -112,6 +112,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.UnsaltedMD5PasswordHasher'
@@ -159,8 +160,8 @@ STATICFILES_DIRS = [
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-LOGIN_REDIRECT_URL = reverse_lazy('/')
-# LOGOUT_REDIRECT_URL = '/login/'
+LOGIN_REDIRECT_URL = reverse_lazy('car_list')
+# LOGOUT_REDIRECT_URL = '/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
