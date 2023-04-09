@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de2c7e49-9ded-4c06-a24a-2830d90a403c" name="Changes" comment="я в отчаиние">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/templates/director/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/organization/templates/director/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="de2c7e49-9ded-4c06-a24a-2830d90a403c" name="Changes" comment="я в отчаиние" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,8 +144,26 @@
       <option name="project" value="LOCAL" />
       <updated>1681060531007</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="я в отчаиние">
+      <created>1681071576057</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1681071576057</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
