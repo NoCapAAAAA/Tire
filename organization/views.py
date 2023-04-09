@@ -71,11 +71,7 @@ def TestDocument(request):
     qs2 = m.OrderStorage.objects.all().order_by('pk')
     qs2count = qs2.count()
     print(qs2.__dict__)
-
-    # Creating a table object
-    table = document.add_table(rows=qs2count, cols=11)
-
-    # Adding heading in the 1st row of the table
+    table = document.add_table(rows=100, cols=11)
     table.style = 'Table Grid'
     table.cell(0, 0).text = 'Номер заказа'
     table.cell(0, 1).text = 'Клиент'
@@ -88,6 +84,16 @@ def TestDocument(request):
     table.cell(0, 8).text = 'Дата оплаты'
     table.cell(0, 9).text = 'Создано'
     table.cell(0, 10).text = 'Обновлено'
+    # Creating a table object
+
+    for order in m.OrderStorage.objects.all().order_by('pk'):
+        row = order.pk
+        table.cell(row, 0).text = str(order.pk)
+
+
+
+
+
 
     document.add_page_break()
 
