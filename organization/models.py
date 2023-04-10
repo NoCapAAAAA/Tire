@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from core.models import AbstractTimestampedModel
+
 User = get_user_model()
 from conf.settings import AUTH_USER_MODEL
 
@@ -46,7 +47,7 @@ class OrderStatus(models.IntegerChoices):
 
 
 class AdressSirvice(models.Model):
-    adress = models.CharField(verbose_name='Адрес сервиса', max_length=125,)
+    adress = models.CharField(verbose_name='Адрес сервиса', max_length=125, )
 
     def __str__(self):
         return f'{self.adress}'
@@ -66,8 +67,8 @@ class OrderStorage(models.Model):
     # adress = models.ForeignKey(verbose_name='Адрес', blank=True, null=True, to=AdressSirvice,
     #                              on_delete=models.CASCADE)
 
-    size = models.IntegerField(verbose_name='Размер шин', blank=True, null=True,)
-    period = models.IntegerField(verbose_name='Период хранение', blank=True, null=True,)
+    size = models.IntegerField(verbose_name='Размер шин', blank=True, null=True, )
+    period = models.IntegerField(verbose_name='Период хранение', blank=True, null=True, )
     adress = models.CharField(verbose_name='Адрес сервиса', blank=True, null=True, max_length=125)
     status = models.IntegerField(verbose_name='Статус заказа', choices=OrderStatus.choices, default=0)
     price = models.DecimalField(verbose_name='Цена', max_digits=10, decimal_places=2)
@@ -91,6 +92,14 @@ class OrderStorage(models.Model):
             self.payed_at = timezone.now()
             self.__original_is_payed = self.is_payed
         return super().save(force_insert, force_update, *args, **kwargs)
+
+    def get_nds(self):
+        from decimal import Decimal, ROUND_HALF_DOWN
+        try:
+            res = self.price * Decimal(0.2)
+            return res.quantize(Decimal("1.00"), ROUND_HALF_DOWN)
+        except:
+            return None
 
     class Meta:
         verbose_name = 'Заказ'

@@ -75,7 +75,7 @@
                     <a href="{% url 'order_cancel_tire' order.pk %}" class="btn btn-danger">Отменить</a>
                     {% endif %}
                     {% if order.is_payed %}
-                    <a href="{% url 'order_cheque' order.pk %}" class="btn btn-primary">Просмотреть чек</a>
+                    <a href="{% url 'order_cheque_tire' order.pk %}" class="btn btn-primary">Просмотреть чек</a>
                     {% endif %}
               </div>
             </div>
