@@ -14,6 +14,7 @@ urlpatterns = [
     path('docs/', views.TestDocument, name='report_download'),
 
     path('manager/', v.ManagerHomeView.as_view(), name='managerHome'),
+    path('manager/setting/', v.ManagerEdit.as_view(), name='manager_edit')
 
 
 ]

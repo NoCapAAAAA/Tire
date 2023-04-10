@@ -1,7 +1,17 @@
 from _cffi_backend import string
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import FormView, UpdateView, DetailView, TemplateView
 from . import models as m
+# Для создания отчётов
+from django.http import HttpResponse
+from docx import *
+from io import BytesIO
+from datetime import datetime, date
+import locale
+
+from .forms import SettingsProfile
+
 
 class DirectorHomeView(TemplateView):
     template_name = 'director/home.html'
@@ -39,14 +49,14 @@ class ManagerHomeView(TemplateView):
 class ManagerOrdersView(TemplateView):
     template_name = 'manager/orders.html'
 
-from django.http import HttpResponse
-from docx import *
-from docx.shared import Inches
-from datetime import date
-from io import BytesIO
-from datetime import datetime, date, time
-import locale
 
+class ManagerEdit(UpdateView):
+    template_name = 'manager/edit_profile_manager.html'
+    form_class = SettingsProfile
+    success_url = reverse_lazy('manager_edit')
+
+    def get_object(self, **kwargs):
+        return self.request.user
 
 
 def TestDocument(request):
@@ -57,7 +67,7 @@ def TestDocument(request):
     current_datetime = datetime.now()
     str_current_datetime = str(current_datetime)
     document = Document()
-    docx_title= "report"+str_current_datetime+".docx"
+    docx_title = "report" + str_current_datetime + ".docx"
     # ---- Cover Letter ----
     document.add_paragraph()
     document.add_paragraph("%s" % date.today().strftime('%B %d, %Y'))
@@ -96,12 +106,6 @@ def TestDocument(request):
         else:
             order.is_payed = "Нет"
         table.cell(row, 7).text = str(order.is_payed)
-
-
-
-
-
-
 
     document.add_page_break()
 

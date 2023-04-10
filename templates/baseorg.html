@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,6 +28,7 @@
 </head>
 
 {% block body %}
+<body class="horizontal-navigation">
 <!-- Preloader -->
 <div class="preloader">
     <div class="preloader-icon"></div>
@@ -38,18 +38,14 @@
 <!-- ./ Preloader -->
 <div class="layout-wrapper">
     {% block header %} {% endblock %}
-<body class="horizontal-navigation">
-
-    <div class="content-wrapper">
-
-    <div class="content-wrapper">
-        {% block main %} {% endblock %}
-    </div>
+        <div class="content-wrapper">
+            <div class="content-body">
+                <div class="content">
+                    {% block main %} {% endblock %}
+                </div>
+            </div>
+        </div>
 </div>
-
-
-
-
     <script src="{%static 'vendors/bundle.js' %}"></script>
 
     <!-- Apex chart -->
@@ -66,11 +62,6 @@
 
     <!-- App scripts -->
     <script src="{%static 'assets/js/app.min.js' %}"></script>
-
-
-
-
 </body>
 {% endblock %}
-
 </html>

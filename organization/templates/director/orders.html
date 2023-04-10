@@ -67,7 +67,7 @@
                       <a href="{{ order.pk }}">№{{ order.pk }}</a>
                     </td>
                     <td>{{ order.user }}</td>
-                    <td>$230</td>
+                    <td>{{ order.price }}</td>
                     <td>
                       <span class="badge bg-secondary-bright text-secondary">{{ order.get_status_display }}</span>
                     </td>
