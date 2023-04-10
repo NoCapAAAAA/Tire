@@ -81,7 +81,7 @@ $(function () {
                 },
                 series: [{
                     name: 'Net Profit',
-                    data: [60, 55, 57, 56, 61, 58, 63, 60, 66]
+                    data: [929, 55, 57, 150, 61, 58, 63, 60, 200]
                 }],
                 plotOptions: {
                     bar: {
@@ -97,7 +97,7 @@ $(function () {
                 tooltip: {
                     y: {
                         formatter: function (val) {
-                            return "$ " + val + " thousands"
+                            return "$ " + val + " жопа"
                         }
                     }
                 }

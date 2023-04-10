@@ -1,8 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import HttpResponseRedirect
+from django.shortcuts import HttpResponseRedirect, get_object_or_404, render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, ListView
 from core.mixins import ExtraContextMixin
 from organization import models as m
 from django.contrib.auth import get_user_model
@@ -49,9 +49,9 @@ class ContactView(generic.TemplateView):
 #         return ret
 
 
-class StartOrder(LoginRequiredMixin, TemplateView):
+class CreateOrderTire(LoginRequiredMixin, TemplateView):
     template_name = "clientpart/order_create.html"
-    success_url = reverse_lazy('order-list')
+    success_url = reverse_lazy('order_list_tire')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -88,20 +88,49 @@ class StartOrder(LoginRequiredMixin, TemplateView):
         return HttpResponseRedirect(self.success_url)
 
 
-class OrderListView(LoginRequiredMixin, TemplateView):
+class OrderListView(LoginRequiredMixin, ListView):
+    model = m.OrderStorage
     template_name = "clientpart/order-list.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['orders'] = m.OrderStorage.objects.filter(user=self.request.user)
-        return context
+    context_object_name = 'orders'
+    paginate_by = 5
+    def get_queryset(self):
+        return m.OrderStorage.objects.filter(user=self.request.user)
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['orders'] = m.OrderStorage.objects.filter(user=self.request.user)
+    #     return context
 
 
 class DetailOrderView(DetailView):
     template_name = "clientpart/order-detail.html"
     model = m.OrderStorage
-
+    extra_context = {
+        'status_cancelled': m.OrderStatus.CANCELED
+    }
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['detail'] = m.OrderStorage.objects.filter(pk=self.kwargs['pk'])
         return context
+
+
+def order_pay_tire(request, pk):
+    order = get_object_or_404(m.OrderStorage, pk=pk)
+    order.is_payed = True
+    order.save()
+    print(order.payed_at)
+    return redirect(reverse_lazy('detail_order_tire', kwargs={'pk': pk}))
+
+
+def order_cancel_tire(request, pk):
+    order = get_object_or_404(m.OrderStorage, pk=pk)
+    order.status = m.OrderStatus.CANCELED
+    order.save()
+    return redirect(reverse_lazy('detail_order_tire', kwargs={'pk': pk}))
+
+
+def cheque_tire(request, pk):
+    order = get_object_or_404(m.OrderStorage, pk=pk)
+    context = {
+        'order': order
+    }
+    return render(request, 'clientpart/cheque.html', context)

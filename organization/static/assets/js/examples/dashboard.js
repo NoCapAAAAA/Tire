@@ -270,7 +270,7 @@ $(document).ready(function () {
             var ctx = document.getElementById("chart_demo_4").getContext("2d");
             var densityData = {
                 backgroundColor: chartColors.primary.light,
-                data: [10, 20, 40, 60, 80, 40, 60, 80, 40, 80, 20, 59]
+                data: [10, 20, 40, 60, 80, 40, 1000, 80, 40, 80, 20, 59]
             };
             new Chart(ctx, {
                 type: 'bar',

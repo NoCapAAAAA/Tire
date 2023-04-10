@@ -1,7 +1,8 @@
 {% extends 'clientpart/base.html' %}
 {% load static %}
-{% block title %} Заказ # {% endblock %}
-
+{% for order in detail %}
+{% block title %} Заказ {{order.pk}} {% endblock %}
+{% endfor %}
 {% block main %}
 
 <main>
@@ -22,7 +23,7 @@
           <div class="card">
             <div class="order-header">
               <div class="order-header__actions">
-                <a href="{% url 'order-list' %}" class="btn btn-xs btn-secondary">Назад к списку</a>
+                <a href="{% url 'order_list_tire' %}" class="btn btn-xs btn-secondary">Назад к списку</a>
               </div>
               <h5 class="order-header__title">Номер {{order.id}}</h5>
               <div class="order-header__subtitle">
@@ -67,6 +68,15 @@
                     </tr>
                   </tfoot>
                 </table>
+                    {% if not order.is_payed and order.status != status_cancelled %}
+                    <a href="{% url 'order_pay_tire' order.pk %}" class="btn btn-primary">Оплатить</a>
+                    {% endif %}
+                    {% if order.status != status_cancelled and not order.is_payed %}
+                    <a href="{% url 'order_cancel_tire' order.pk %}" class="btn btn-danger">Отменить</a>
+                    {% endif %}
+                    {% if order.is_payed %}
+                    <a href="{% url 'order_cheque' order.pk %}" class="btn btn-primary">Просмотреть чек</a>
+                    {% endif %}
               </div>
             </div>
           </div>

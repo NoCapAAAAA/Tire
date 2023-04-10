@@ -99,13 +99,13 @@
       <div class="topbar__container container">
         <div class="topbar__row">
           <div class="topbar__item topbar__item--link">
-            <a class="topbar-link" href="{% url 'about-us' %}">О нас</a>
+            <a class="topbar-link" href="{% url 'about_tire' %}">О нас</a>
           </div>
           <div class="topbar__item topbar__item--link">
-            <a class="topbar-link" href="{% url 'contact' %}">Контакты</a>
+            <a class="topbar-link" href="{% url 'contact_tire' %}">Контакты</a>
           </div>
           <div class="topbar__item topbar__item--link">
-            <a class="topbar-link" href="{% url 'order-list' %}">Отследить заказ</a>
+            <a class="topbar-link" href="{% url 'order_list_tire' %}">Отследить заказ</a>
           </div>
           <div class="topbar__spring"></div>
           <div class="topbar__item">
@@ -144,14 +144,14 @@
                     <li class="menu__item">
                       <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                       <div class="menu__item-submenu-offset"></div>
-                      <a class="menu__item-link" href="account-orders.html">
+                      <a class="menu__item-link" href="{% url 'order_list_tire' %}">
                                                         История заказов
                                                     </a>
                     </li>
                     <li class="menu__item">
                       <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                       <div class="menu__item-submenu-offset"></div>
-                      <a class="menu__item-link" href="account-password.html">
+                      <a class="menu__item-link" href="{% url 'password_edit' %}">
                                                         Сменить пароль
                                                     </a>
                     </li>

@@ -61,16 +61,13 @@
                     </svg>
                   </a>
                 </li>
-                <li class="page-item"><a class="page-link" href="">1</a></li>
-                <li class="page-item active"><a class="page-link" href="">2 <span class="sr-only">(current)</span></a></li>
-                <li class="page-item"><a class="page-link" href="">3</a></li>
-                <li class="page-item">
-                  <a class="page-link page-link--with-arrow" href="" aria-label="Next">
-                    <svg class="page-link__arrow page-link__arrow--right" aria-hidden="true" width="8px" height="13px">
-                      <use xlink:href="images/sprite.svg#arrow-rounded-right-8x13"></use>
-                    </svg>
-                  </a>
-                </li>
+                {% if page_obj.has_previous %}
+                  <li class="page-item active"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&lt;<span class="sr-only">&lt;</span></a></li>
+                {% endif %}
+                  <li class="page-item active"><a class="page-link" href="">{{ page_obj.number }}<span class="sr-only">(current)</span></a></li>
+                {% if page_obj.has_next %}
+                  <li class="page-item active"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&gt;<span class="sr-only">&gt;</span></a></li>
+                {% endif %}
               </ul>
             </div>
           </div>

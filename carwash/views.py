@@ -138,12 +138,7 @@ class OrderCreateView(generic.CreateView):
         return ret
 
 
-def order_pay(request, pk):
-    order = get_object_or_404(m.Order, pk=pk)
-    order.is_payed = True
-    order.save()
-    print(order.payed_at)
-    return redirect(reverse_lazy('order_list'))
+
 
 
 def order_cancel(request, pk):
