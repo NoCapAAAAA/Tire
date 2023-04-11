@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de2c7e49-9ded-4c06-a24a-2830d90a403c" name="Changes" comment="добавил формирование отчётов по заказам">
+    <list default="true" id="de2c7e49-9ded-4c06-a24a-2830d90a403c" name="Changes" comment="что-то сделал">
       <change afterPath="$PROJECT_DIR$/organization/templates/manager/pass_change.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
@@ -191,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681237008479</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="что-то сделал">
+      <created>1681241949571</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1681241949571</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -214,7 +221,8 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
     <MESSAGE value="я в отчаиние" />
     <MESSAGE value="добавил формирование отчётов по заказам" />
-    <option name="LAST_COMMIT_MESSAGE" value="добавил формирование отчётов по заказам" />
+    <MESSAGE value="что-то сделал" />
+    <option name="LAST_COMMIT_MESSAGE" value="что-то сделал" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
