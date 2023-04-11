@@ -1,7 +1,7 @@
 from _cffi_backend import string
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import FormView, UpdateView, DetailView, TemplateView
+from django.views.generic import FormView, UpdateView, DetailView, TemplateView, ListView
 from . import models as m
 # Для создания отчётов
 from django.http import HttpResponse
@@ -10,20 +10,21 @@ from io import BytesIO
 from datetime import datetime, date
 import locale
 
-from .forms import SettingsProfile
+from organization import forms as f
 
 
 class DirectorHomeView(TemplateView):
     template_name = 'director/home.html'
 
 
-class DirectorOrdersView(TemplateView):
+class DirectorOrdersView(ListView):
+    model = m.OrderStorage
     template_name = 'director/orders.html'
+    context_object_name = 'orders'
+    paginate_by = 10
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['orders'] = m.OrderStorage.objects.all()
-        return context
+    def get_queryset(self):
+        return m.OrderStorage.objects.all().order_by('-pk')
 
 
 class DirectorUsersView(TemplateView):
@@ -52,10 +53,19 @@ class ManagerOrdersView(TemplateView):
 
 class ManagerEdit(UpdateView):
     template_name = 'manager/edit_profile_manager.html'
-    form_class = SettingsProfile
+    form_class = f.SettingsProfile
     success_url = reverse_lazy('manager_edit')
 
     def get_object(self, **kwargs):
+        return self.request.user
+
+
+class PassChange(UpdateView):
+    form_class = f.CustomPasswordChangeForm
+    template_name = 'manager/pass_change.html'
+    success_url = reverse_lazy('home')
+
+    def get_object(self):
         return self.request.user
 
 

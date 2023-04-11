@@ -9,3 +9,8 @@ class SettingsProfile(auth_forms.UserChangeForm):
     class Meta:
         model = user_model
         fields = ('username', 'email', 'last_name', 'first_name', 'middle_name', 'phone_number', 'gender', 'photo')
+
+
+class CustomPasswordChangeForm(auth_forms.PasswordChangeForm):
+    def __init__(self, instance, *args, **kwargs):
+        super().__init__(instance, *args, **kwargs)
