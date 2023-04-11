@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de2c7e49-9ded-4c06-a24a-2830d90a403c" name="Changes" comment="что-то сделал">
-      <change afterPath="$PROJECT_DIR$/organization/templates/manager/pass_change.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/organization/templates/director/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/organization/templates/director/orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/templates/manager/edit_profile_manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/organization/templates/manager/edit_profile_manager.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/organization/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -198,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681241949571</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="что-то сделал">
+      <created>1681241958997</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1681241958997</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

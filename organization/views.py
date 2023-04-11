@@ -21,7 +21,7 @@ class DirectorOrdersView(ListView):
     model = m.OrderStorage
     template_name = 'director/orders.html'
     context_object_name = 'orders'
-    paginate_by = 10
+    paginate_by = 7
 
     def get_queryset(self):
         return m.OrderStorage.objects.all().order_by('-pk')
