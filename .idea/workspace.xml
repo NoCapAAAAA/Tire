@@ -4,24 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de2c7e49-9ded-4c06-a24a-2830d90a403c" name="Changes" comment="формирование чека в html">
-      <change afterPath="$PROJECT_DIR$/media/avatars/photo_2023-04-10_18-03-03.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/organization/templates/fuck/baseEditMySelf.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/organization/templates/fuck/baseHead.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/organization/templates/manager/edit_profile_manager.html" afterDir="false" />
+    <list default="true" id="de2c7e49-9ded-4c06-a24a-2830d90a403c" name="Changes" comment="добавил формирование отчётов по заказам">
+      <change afterPath="$PROJECT_DIR$/tirestorage/templates/clientpart/cheque.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication/templates/authentication/dir.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication/templates/authentication/men.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication/templates/authentication/userBase.html" beforeDir="false" afterPath="$PROJECT_DIR$/authentication/templates/authentication/userBase.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carwash/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/carwash/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carwash/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/carwash/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/templates/director/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/organization/templates/director/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/templates/director/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/organization/templates/director/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/templates/director/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/organization/templates/director/orders.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/templates/manager/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/organization/templates/manager/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/organization/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/baseorg.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/baseorg.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/static/assets/js/examples/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/organization/static/assets/js/examples/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/static/assets/js/examples/pages/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/organization/static/assets/js/examples/pages/dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tirestorage/templates/clientpart/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/templates/clientpart/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tirestorage/templates/clientpart/order-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/templates/clientpart/order-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tirestorage/templates/clientpart/order-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/templates/clientpart/order-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tirestorage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tirestorage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,21 +182,7 @@
       <option name="project" value="LOCAL" />
       <updated>1681071638587</updated>
     </task>
-    <task id="LOCAL-00017" summary="пагинация заказов, оплата заказа, отмена заказа, что-то еще">
-      <created>1681157963996</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1681157963996</updated>
-    </task>
-    <task id="LOCAL-00018" summary="формирование чека в html">
-      <created>1681158867418</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1681158867418</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -223,9 +205,7 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
     <MESSAGE value="я в отчаиние" />
     <MESSAGE value="добавил формирование отчётов по заказам" />
-    <MESSAGE value="пагинация заказов, оплата заказа, отмена заказа, что-то еще" />
-    <MESSAGE value="формирование чека в html" />
-    <option name="LAST_COMMIT_MESSAGE" value="формирование чека в html" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавил формирование отчётов по заказам" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
