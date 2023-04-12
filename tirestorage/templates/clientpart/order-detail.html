@@ -1,10 +1,7 @@
 {% extends 'clientpart/base.html' %}
 {% load static %}
-{% for order in detail %}
-{% block title %} Заказ {{order.pk}} {% endblock %}
-{% endfor %}
+{% block title %}Детальная информация о заказе{% endblock %}
 {% block main %}
-
 <main>
   <div class="page-header">
     <div class="page-header__container container">

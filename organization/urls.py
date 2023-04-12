@@ -9,7 +9,8 @@ urlpatterns = [
     path('director/users', v.DirectorUsersView.as_view(), name='directorUsers'),
     path('director/clients', v.DirectorClientsView.as_view(), name='directorClients'),
     path('director/stuff', v.DirectorStuffView.as_view(), name='directorStuff'),
-    path('director/orders', v.DirectorOrdersView.as_view(), name='directorOrders'),
+    path('director/orders/', v.DirectorOrdersView.as_view(), name='directorOrders'),
+    path('director/orders/<int:pk>/', v.DetailOrderViewDir.as_view(), name='directorOrdersDetail'),
     path('director/statistics', v.DirectorStatisticsView.as_view(), name='directorStatistics'),
     path('docs/', views.TestDocument, name='report_download'),
 

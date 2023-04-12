@@ -1,8 +1,9 @@
 from _cffi_backend import string
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import FormView, UpdateView, DetailView, TemplateView, ListView
 from . import models as m
+from organization import forms as f
 # Для создания отчётов
 from django.http import HttpResponse
 from docx import *
@@ -25,6 +26,17 @@ class DirectorOrdersView(ListView):
 
     def get_queryset(self):
         return m.OrderStorage.objects.all().order_by('-pk')
+
+
+class DetailOrderViewDir(UpdateView):
+    success_url = reverse_lazy('directorOrdersDetail')
+    template_name = "director/order_detail_dir.html"
+    form_class = f.UpdateOrderDir
+
+    def get_queryset(self):
+        return m.OrderStorage.objects.filter(pk=self.kwargs['pk'])
+
+
 
 
 class DirectorUsersView(TemplateView):
