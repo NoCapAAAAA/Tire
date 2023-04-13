@@ -1,11 +1,14 @@
 from _cffi_backend import string
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import FormView, UpdateView, DetailView, TemplateView, ListView
+from django.views.generic import FormView, UpdateView, CreateView, TemplateView, ListView
 from . import models as m
+from django.contrib import messages
+from authentication import models as user
+
 from organization import forms as f
 # Для создания отчётов
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from docx import *
 from io import BytesIO
 from datetime import datetime, date
@@ -29,14 +32,61 @@ class DirectorOrdersView(ListView):
 
 
 class DetailOrderViewDir(UpdateView):
-    success_url = reverse_lazy('directorOrdersDetail')
     template_name = "director/order_detail_dir.html"
+    model = m.OrderStorage
     form_class = f.UpdateOrderDir
 
     def get_queryset(self):
         return m.OrderStorage.objects.filter(pk=self.kwargs['pk'])
 
+    def form_valid(self, form):
+        messages.success(self.request, "The task was updated successfully.")
+        return super(DetailOrderViewDir, self).form_valid(form)
 
+    def get_success_url(self):
+        return reverse_lazy('directorOrdersDetail', kwargs={'pk': self.kwargs['pk']})
+
+
+class CreateOrder(TemplateView):
+    success_url = reverse_lazy('directorOrders')
+    template_name = "director/create_order.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user'] = user.User.objects.all().order_by('username')
+        context['size'] = m.TireSize.objects.all().order_by('size')
+        context['period'] = m.PeriodOfStorage.objects.all().order_by('period')
+        context['adress'] = m.AdressSirvice.objects.all().order_by('adress')
+        # context['status'] = m.OrderStatus.objects.all().order_by('status')
+        return context
+
+    # noinspection PyUnboundLocalVariable
+    def post(self, request):
+        data = dict(request.POST)
+        print(data)
+        tire_size = int(data.get('Tiresize')[0])
+        price_3500 = [13, 14, 15]
+        price_4000 = [16, 17, 18]
+        price_4700 = [18, 19]
+        price_5700 = [20, 21, 21]
+        if tire_size in price_3500:
+            price = 3500
+        elif tire_size in price_4000:
+            price = 4000
+        elif tire_size in price_4700:
+            price = 4700
+        elif tire_size in price_5700:
+            price = 5700
+        create = m.OrderStorage.objects.create(user=int(data.get('User')[0]),
+                                               size=data.get('Tiresize')[0],
+                                               period=data.get('Period')[0],
+                                               price=price
+                                               )
+        if create:
+            print('Успех')
+        else:
+            print('Не успех')
+        return HttpResponseRedirect(self.success_url)
 
 
 class DirectorUsersView(TemplateView):

@@ -4,35 +4,12 @@
 {% block title %} Создание заказа {% endblock %}
 
 {% block main %}
-<main class="container">
-
-    <form action="" method="post">
+<form action="" method="post">
         {% csrf_token %}
-                              <div class="form-group">
-                          <label>Диаметр шины</label>
-                          <div class="select-wrap">
-                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                        <select class="form-control" id="Rtire2" name="Tiresize" required>
-                            {% for TireSize in size %}
-                            <option value="{{TireSize.size}}">{{TireSize.size}}</option>
-                            {% endfor %}
-                        </select>
-                      </div>
-                      </div>
-                            <div class="form-group">
-                        <label>Желаемый Срок хранения</label>
-                        <div class="select-wrap">
-                      <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                      <select class="form-control" id="monthTire2" type="text"  name="Period" required>
-                            {% for Period in period %}
-                            <option value="{{Period.period}}">{{Period.period}}</option>
-                            {% endfor %}
-                      </select>
-                    </div>
-                    </div>
+        {{ form|crispy }}
 <input type="submit" value="Сохранить" class="btn btn-primary my-2">
 
-    </form>
-</main>
+</form>
+
 
 {% endblock %}

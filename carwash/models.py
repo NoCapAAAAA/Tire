@@ -45,8 +45,7 @@ class OrderStatus(models.IntegerChoices):
 
 
 class Order(AbstractTimestampedModel):
-    client = models.ForeignKey(settings.AUTH_USER_MODEL,
-        verbose_name='Клиент',on_delete=models.CASCADE)
+    client = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='Клиент',on_delete=models.CASCADE)
     price = models.ForeignKey(
         verbose_name='Цена', to=Price, on_delete=models.CASCADE)
     car = models.ForeignKey(verbose_name='Авто', to=Car,

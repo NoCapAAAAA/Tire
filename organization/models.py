@@ -59,19 +59,19 @@ class AdressSirvice(models.Model):
 
 class OrderStorage(models.Model):
     user = models.ForeignKey(AUTH_USER_MODEL, verbose_name='User', on_delete=models.CASCADE)
-    # quantity = models.ForeignKey(verbose_name='Количество', blank=True, null=True, to=QuantityOfTires, on_delete=models.CASCADE)
-    # size = models.ForeignKey(verbose_name='Размер', blank=True, null=True, to=TireSize,
-    #                              on_delete=models.CASCADE)
-    # period = models.ForeignKey(verbose_name='Период', blank=True, null=True, to=PeriodOfStorage,
-    #                              on_delete=models.CASCADE)
-    # adress = models.ForeignKey(verbose_name='Адрес', blank=True, null=True, to=AdressSirvice,
-    #                              on_delete=models.CASCADE)
-
-    size = models.IntegerField(verbose_name='Size', blank=True, null=True, )
-    period = models.IntegerField(verbose_name='Period', blank=True, null=True, )
-    adress = models.CharField(verbose_name='Adress', blank=True, null=True, max_length=125)
-    status = models.IntegerField(verbose_name='Status', choices=OrderStatus.choices, default=0)
-    price = models.DecimalField(verbose_name='Price', max_digits=10, decimal_places=2)
+    quantity = models.ForeignKey(verbose_name='Количество', blank=True, null=True, to=QuantityOfTires, on_delete=models.CASCADE)
+    size = models.ForeignKey(verbose_name='Размер', blank=True, null=True, to=TireSize,
+                                 on_delete=models.CASCADE)
+    period = models.ForeignKey(verbose_name='Период', blank=True, null=True, to=PeriodOfStorage,
+                                 on_delete=models.CASCADE)
+    adress = models.ForeignKey(verbose_name='Адрес', blank=True, null=True, to=AdressSirvice,
+                                 on_delete=models.CASCADE)
+    #
+    # size = models.IntegerField(verbose_name='Size', blank=True, null=True, )
+    # period = models.IntegerField(verbose_name='Period', blank=True, null=True, )
+    # adress = models.CharField(verbose_name='Adress', blank=True, null=True, max_length=125)
+    # status = models.IntegerField(verbose_name='Status', choices=OrderStatus.choices, default=0)
+    price = models.CharField(max_length=12, blank=True, null=True)
     is_payed = models.BooleanField(verbose_name='Is Payded?', default=False)
     payed_at = models.DateTimeField(verbose_name='Payded_at', blank=True, null=True)
     created_at = models.DateTimeField(verbose_name='created_at', auto_now_add=True)

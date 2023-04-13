@@ -3,11 +3,14 @@
 {% block title %} Заказы {% endblock %}
 {% load crispy_forms_tags %}
 {% block main %}
-
+<div class="order-header__actions">
+                <a href="{% url 'directorOrders' %}" class="btn btn-xs btn-secondary">Назад к списку</a>
+              </div>
 <form action="" method="post">
+
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Save</button>
+    <button type="submit">Сохронить</button>
 </form>
 
 {% endblock %}

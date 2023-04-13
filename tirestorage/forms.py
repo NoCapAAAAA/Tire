@@ -6,10 +6,9 @@ from organization.models import TireSize, PeriodOfStorage, QuantityOfTires, Adre
 class OrderCreateForm(forms.ModelForm):
     user = forms.ModelChoiceField(queryset=get_user_model().objects.all(), widget=forms.HiddenInput())
     status = forms.IntegerField(widget=forms.HiddenInput())
+    price = forms.IntegerField(required=False,widget=forms.HiddenInput())
     is_payed = forms.BooleanField(required=False, widget=forms.HiddenInput())
     payed_at = forms.DateTimeField(widget=forms.HiddenInput(), required=False)
-    size = forms.ModelChoiceField(queryset=TireSize.objects.all().order_by('size'), to_field_name="size")
-
 
     class Meta:
         model = m.OrderStorage

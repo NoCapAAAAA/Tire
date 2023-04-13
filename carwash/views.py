@@ -127,6 +127,8 @@ class OrderCreateView(generic.CreateView):
             form_class = self.get_form_class()
         form = form_class(**self.get_form_kwargs())
         form.fields['car'].queryset = Car.objects.filter(owner__pk=self.request.user.pk)
+        # print(self.cleaned_data['car'])
+
         return form
 
     def get_form_kwargs(self):
@@ -135,6 +137,7 @@ class OrderCreateView(generic.CreateView):
             'client': self.request.user.pk,
             'status': OrderStatus.NOT_DONE
         }
+
         return ret
 
 

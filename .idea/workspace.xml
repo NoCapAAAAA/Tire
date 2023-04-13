@@ -5,14 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="de2c7e49-9ded-4c06-a24a-2830d90a403c" name="Changes" comment="что-то сделал">
-      <change afterPath="$PROJECT_DIR$/organization/templates/director/order_detail_dir.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carwash/migrations/0002_alter_order_car_alter_order_client_alter_order_price.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/carwash/migrations/0003_alter_order_car_alter_order_client_alter_order_price.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/organization/migrations/0004_alter_orderstorage_adress_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/organization/migrations/0005_remove_orderstorage_status_orderstorage_quantity_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/organization/migrations/0006_alter_orderstorage_price.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/organization/migrations/0007_alter_orderstorage_price.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/organization/migrations/0008_alter_orderstorage_price.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/organization/migrations/0009_alter_orderstorage_price.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/organization/templates/director/create_order.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carwash/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/carwash/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/carwash/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/carwash/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/organization/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/organization/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/templates/director/order_detail_dir.html" beforeDir="false" afterPath="$PROJECT_DIR$/organization/templates/director/order_detail_dir.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/organization/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/organization/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tirestorage/templates/clientpart/order-detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/templates/clientpart/order-detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tirestorage/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tirestorage/templates/clientpart/order_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/templates/clientpart/order_create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tirestorage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tirestorage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681243481411</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="что-то сделал">
+      <created>1681303584079</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1681303584079</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

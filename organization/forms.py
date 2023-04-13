@@ -33,3 +33,9 @@ class UpdateOrderDir(forms.ModelForm):
         model = m.OrderStorage
         fields = '__all__'
 
+
+class OrderCreate(forms.ModelForm):
+
+    class Meta:
+        model = m.OrderStorage
+        fields = '__all__'
