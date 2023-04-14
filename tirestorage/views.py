@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import HttpResponseRedirect, get_object_or_404, render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
-from django.views.generic import TemplateView, DetailView, ListView
+from django.views.generic import TemplateView, DetailView, ListView, CreateView
 from unicodedata import decimal
 
 from core.mixins import ExtraContextMixin
@@ -26,43 +26,27 @@ class ContactView(generic.TemplateView):
     template_name = 'clientpart/contact.html'
 
 
-
-
-
-class StartOrder(generic.CreateView):
+class StartOrder(CreateView):
     template_name = 'clientpart/order_create.html'
     success_url = reverse_lazy('order_list_tire')
     form_class = f.OrderCreateForm
     queryset = m.OrderStorage.objects.all()
 
-    def get_form(self, form_class=None):
-        if form_class is None:
-            form_class = self.get_form_class()
-        form = form_class(**self.get_form_kwargs())
-
-        if form.is_valid():
-            form.fields['size'].queryset = m.TireSize.objects.all()
-            form.fields['period'].queryset = m.PeriodOfStorage.objects.all()
-            form.fields['adress'].queryset = m.AdressSirvice.objects.all()
-            form.fields['quantity'].queryset = m.QuantityOfTires.objects.all()
-
-
-
-        return form
-
-    def price(self, get_form):
-        period = int(str((get_form.form.cleaned_data['period'])))
-        size = int(str((get_form.form.cleaned_data['size'])))
+    def form_valid(self, form):
+        size = int(str(form.cleaned_data['size']))
+        period = int(str(form.cleaned_data['period']))
         price = size * period
+        form.instance.price = price
+        form.instance.user = self.request.user
+        form.instance.status = OrderStatus.CREATE
+        return super().form_valid(form)
 
-        return price
-    def get_form_kwargs(self, price):
-
+    def get_form_kwargs(self, ):
         ret = super().get_form_kwargs()
+        print(ret)
         ret['initial'] = {
             'user': self.request.user.pk,
             'status': OrderStatus.CREATE,
-            'price': price
         }
         return ret
 
