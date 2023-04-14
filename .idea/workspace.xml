@@ -4,15 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de2c7e49-9ded-4c06-a24a-2830d90a403c" name="Changes" comment="я того рот ебал отвечаю просто пиздец какой-то">
-      <change afterPath="$PROJECT_DIR$/organization/migrations/0010_orderstorage_status.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/organization/migrations/0011_alter_orderstorage_price.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/organization/migrations/0012_alter_orderstorage_price.py" afterDir="false" />
+    <list default="true" id="de2c7e49-9ded-4c06-a24a-2830d90a403c" name="Changes" comment="ох уж этот освобожденный джанго">
+      <change afterPath="$PROJECT_DIR$/organization/migrations/0013_alter_orderstorage_created_at_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/organization/templates/director/create_user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/organization/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tirestorage/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tirestorage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/tirestorage/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/templates/director/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/organization/templates/director/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/templates/director/create_order.html" beforeDir="false" afterPath="$PROJECT_DIR$/organization/templates/director/create_order.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/templates/director/orders.html" beforeDir="false" afterPath="$PROJECT_DIR$/organization/templates/director/orders.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/organization/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/organization/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681415795589</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="ох уж этот освобожденный джанго">
+      <created>1681482279592</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1681482279592</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -251,7 +261,8 @@
     <MESSAGE value="добавил формирование отчётов по заказам" />
     <MESSAGE value="что-то сделал" />
     <MESSAGE value="я того рот ебал отвечаю просто пиздец какой-то" />
-    <option name="LAST_COMMIT_MESSAGE" value="я того рот ебал отвечаю просто пиздец какой-то" />
+    <MESSAGE value="ох уж этот освобожденный джанго" />
+    <option name="LAST_COMMIT_MESSAGE" value="ох уж этот освобожденный джанго" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

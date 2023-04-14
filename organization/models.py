@@ -40,10 +40,10 @@ class QuantityOfTires(models.Model):
 
 
 class OrderStatus(models.IntegerChoices):
-    CREATE = 0, 'Create'
-    STORAGE = 1, 'IN_Storage'
-    CANCELED = 2, 'Cancel'
-    FINISH = 3, 'Finish'
+    CREATE = 0, 'Создан'
+    STORAGE = 1, 'На хранении'
+    CANCELED = 2, 'Отменён'
+    FINISH = 3, 'Завершен'
 
 
 class AdressSirvice(models.Model):
@@ -60,22 +60,15 @@ class AdressSirvice(models.Model):
 class OrderStorage(models.Model):
     user = models.ForeignKey(AUTH_USER_MODEL, verbose_name='User', on_delete=models.CASCADE)
     quantity = models.ForeignKey(verbose_name='Количество', blank=True, null=True, to=QuantityOfTires, on_delete=models.CASCADE)
-    size = models.ForeignKey(verbose_name='Размер', blank=True, null=True, to=TireSize,
-                                 on_delete=models.CASCADE)
-    period = models.ForeignKey(verbose_name='Период', blank=True, null=True, to=PeriodOfStorage,
-                                 on_delete=models.CASCADE)
-    adress = models.ForeignKey(verbose_name='Адрес', blank=True, null=True, to=AdressSirvice,
-                                 on_delete=models.CASCADE)
-    #
-    # size = models.IntegerField(verbose_name='Size', blank=True, null=True, )
-    # period = models.IntegerField(verbose_name='Period', blank=True, null=True, )
-    # adress = models.CharField(verbose_name='Adress', blank=True, null=True, max_length=125)
-    status = models.IntegerField(verbose_name='Status', choices=OrderStatus.choices, default=0)
-    price = models.IntegerField(verbose_name='Price', default=0, blank=True, null=True)
-    is_payed = models.BooleanField(verbose_name='Is Payded?', default=False)
-    payed_at = models.DateTimeField(verbose_name='Payded_at', blank=True, null=True)
-    created_at = models.DateTimeField(verbose_name='created_at', auto_now_add=True)
-    updated_at = models.DateTimeField(verbose_name='updated_at', auto_now=True)
+    size = models.ForeignKey(verbose_name='Размер', blank=True, null=True, to=TireSize, on_delete=models.CASCADE)
+    period = models.ForeignKey(verbose_name='Период', blank=True, null=True, to=PeriodOfStorage, on_delete=models.CASCADE)
+    adress = models.ForeignKey(verbose_name='Адрес', blank=True, null=True, to=AdressSirvice, on_delete=models.CASCADE)
+    status = models.IntegerField(verbose_name='Статус', choices=OrderStatus.choices, default=0)
+    price = models.IntegerField(verbose_name='Цена', default=0, blank=True, null=True)
+    is_payed = models.BooleanField(verbose_name='Оплачен', default=False)
+    payed_at = models.DateTimeField(verbose_name='Дата оплаты', blank=True, null=True)
+    created_at = models.DateTimeField(verbose_name='Создан', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Обновлён', auto_now=True)
 
     def get_absolute_url(self):
         return reverse('order_detail', kwargs={'pk': self.pk})

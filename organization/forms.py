@@ -9,6 +9,17 @@ user_model = get_user_model()
 """
 
 
+class CreateUserForm(auth_forms.UserCreationForm):
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        if commit:
+            user.save()
+        return user
+
+    class Meta:
+        model = user_model
+        fields = '__all__'
+
 class SettingsProfile(auth_forms.UserChangeForm):
     password = None
 
@@ -35,6 +46,8 @@ class UpdateOrderDir(forms.ModelForm):
 
 
 class OrderCreate(forms.ModelForm):
+    price = forms.IntegerField(widget=forms.HiddenInput(), required=False)
+    user = forms.ModelChoiceField(queryset=get_user_model().objects.all(),)
 
     class Meta:
         model = m.OrderStorage

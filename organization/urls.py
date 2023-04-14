@@ -13,8 +13,10 @@ urlpatterns = [
     path('director/orders/', v.DirectorOrdersView.as_view(), name='directorOrders'),
     path('director/order_create/', v.CreateOrder.as_view(), name='create_order'),
     path('director/orders/<int:pk>/', v.DetailOrderViewDir.as_view(), name='directorOrdersDetail'),
+
+    path('director/create_user/', v.CreateUser.as_view(), name='create_user'),
     path('director/statistics', v.DirectorStatisticsView.as_view(), name='directorStatistics'),
-    path('docs/', views.TestDocument, name='report_download'),
+    # path('docs/', views.TestDocument, name='report_download'),
 
     path('manager/', v.ManagerHomeView.as_view(), name='managerHome'),
     path('manager/setting/', v.ManagerEdit.as_view(), name='manager_edit'),
